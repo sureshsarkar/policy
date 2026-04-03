@@ -1,0 +1,1 @@
+<?php echo $email_body; ?><?php /**PATH E:\Xampp8.2\htdocs\laravel\voting-app\projects\resources\views/mail/dummyMail.blade.php ENDPATH**/ ?>
