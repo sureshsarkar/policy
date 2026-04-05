@@ -71,14 +71,14 @@ function ajaxCallCheckBoxDelete(name,url,indexPage,indexName){
         });
         if(id.length>0){
             if(confirm("Are you sure you want to "+name+" this "+indexName+"?")){
-                
+
                 data={_token:"{{ csrf_token() }}",id:id,name:name};
                 $.post(url,data,function(data){
                     if(flag==1){
                         location.href=location.href;
                     }
                     else{
-                        location.href=indexPage;                    
+                        location.href=indexPage;
                     }
                 })
             }

@@ -15,7 +15,7 @@ error_reporting(0);
 @section('container')
     @php
         $name = $data->name;
-        $bannerImage = asset('front/images/inner-banner.jpg');
+        $bannerImage = asset('front/images/inner-banner.png');
         if ($data->bannerImage) {
             $bannerImage = asset($data->bannerImage);
         }

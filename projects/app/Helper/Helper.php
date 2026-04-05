@@ -365,6 +365,8 @@ class Helper{
             "company-form"=>"Company Form",
             "categories"=>"category",
             "contact"=>"Contact",
+            "become-a-posp"=>"Become A POSP",
+            "policy-detail"=>"Policy Detail",
             "vote-now"=>"Vote Now",
 			/*"jobs-counter"=>"jobs-counter",*/
 			"career"=>"career",

@@ -1,1 +1,0 @@
-<?php echo $email_body; ?><?php /**PATH E:\xampp\htdocs\smartlead\projects\resources\views/mail/dummyMail.blade.php ENDPATH**/ ?>
