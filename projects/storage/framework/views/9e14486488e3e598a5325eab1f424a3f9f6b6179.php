@@ -59,7 +59,7 @@
         <a href="<?php echo e(url('/')); ?>">
             <button class="btn-nav-phone-quote"><i class="fa-solid fa-phone-volume"></i></button>
         </a>
-        <button class="btn-nav-quote"><i class="fas fa-bolt fa-sm"></i> Get Quote</button>
+        <button class="btn-nav-quote" data-bs-toggle="modal" data-bs-target="#getQuoteModel"><i class="fas fa-bolt fa-sm"></i> Get Quote</button>
       </div>
 
       <button class="mob-toggle" id="mobToggle"><i class="fas fa-bars"></i></button>

@@ -28,138 +28,123 @@ error_reporting(0);
 
     <!--========================inner banner section end =======================================-->
 
-  <style>
 
-</style>
+    <!-- ═══════════════════════════════════════
+                     SECTION 1 – HERO QUOTE
+                ═══════════════════════════════════════ -->
+    <section class="hero-quote">
+        <div class="container" style="position:relative;z-index:1;">
+            <div class="row">
 
-<!-- ═══════════════════════════════════════
-     SECTION 1 – HERO QUOTE
-═══════════════════════════════════════ -->
-<section class="hero-quote">
-  <div class="container" style="position:relative;z-index:1;">
-    <div class="row">
+                <!-- LEFT -->
+                <div class="col-lg-6 mt-0">
+                    <div class="hero-left sr">
+                        <div class="img--div">
+                            <img src="<?php echo e(asset('front/images/Bposo.png')); ?>" alt="">
+                        </div>
+                    </div>
+                </div>
 
-      <!-- LEFT -->
-      <div class="col-lg-6 mt-0">
-        <div class="hero-left sr">
+                <!-- RIGHT – FORM -->
+                <div class="col-lg-6">
+                    <div class="quote-card sr">
+                        <div class="qc-header">
+                            <div class="qc-header-tag"><i class="fas fa-bolt me-1"></i> Get Instant Quote</div>
+                            <h3>Compare Car Insurance Plans</h3>
+                            <div class="qc-header-sub">Fill in your details to view the best available plans</div>
+                        </div>
+                        <form id="getPolicyFromId" action="" method="post">
+                            <div class="qc-body">
+                                <!-- Name + Mobile -->
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <div class="form-label-pl">
+                                            <i class="fas fa-user"></i> Full Name <em>*</em>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <input class="form-input has-icon" type="text" placeholder="Rahul Sharma"
+                                                required>
+                                            <i class="fas fa-user input-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-label-pl">
+                                            <i class="fas fa-mobile-screen"></i> Mobile <em>*</em>
+                                        </div>
+                                        <div class="input-wrap">
+                                            <input class="form-input has-icon" type="tel" placeholder="+91 98765 43210"
+                                                required>
+                                            <i class="fas fa-mobile-screen input-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
 
-          <div class="hero-badge">
-            <span class="hb-dot"></span>
-            IRDAI Approved · Trusted by 1M+ Indians
-          </div>
+                                <!-- Email + City -->
+                                <div class="form-row-2">
+                                    <div class="form-group">
+                                        <div class="form-label-pl">
+                                            <i class="fas fa-envelope"></i> Email Address (optional)
+                                        </div>
+                                        <div class="input-wrap">
+                                            <input class="form-input has-icon" type="email" placeholder="rahul@email.com">
+                                            <i class="fas fa-envelope input-icon"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="form-label-pl">
+                                            <i class="fas fa-location-dot"></i> City
+                                        </div>
+                                        <div class="input-wrap">
+                                            <input class="form-input has-icon" type="text" placeholder="New Delhi">
+                                            <i class="fas fa-location-dot input-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Message -->
+                                <div class="form-group">
+                                    <div class="form-label-pl">
+                                        <i class="fa-regular fa-message"></i> Message
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input class="form-input has-icon" type="text" placeholder="Hello..">
+                                        <i class="fa-regular fa-message input-icon"></i>
+                                    </div>
+                                </div>
 
-            <div class="img--div">
-                <img src="<?php echo e(asset('front/images/Bposo.png')); ?>" alt="">
+
+                                <!-- Checkbox -->
+                                <label class="check-wrap">
+                                    <input type="checkbox" checked>
+                                    <span class="check-label">
+                                        I accept to receive notifications on <strong>SMS, emails, and WhatsApp</strong>
+                                        about my
+                                        insurance plans and policy updates.
+                                    </span>
+                                </label>
+
+                                <!-- Submit -->
+                                <button class="btn-submit">
+                                    Submit
+                                    <i class="fas fa-arrow-right fa-sm"></i>
+                                </button>
+
+                                <div class="qc-footer">
+                                    <i class="fas fa-lock"></i>
+                                    Your data is safe &amp; encrypted · No spam, ever
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+
             </div>
-
         </div>
-      </div>
-
-      <!-- RIGHT – FORM -->
-      <div class="col-lg-6">
-        <div class="quote-card sr">
-
-          <div class="qc-header">
-            <div class="qc-header-tag"><i class="fas fa-bolt me-1"></i> Get Instant Quote</div>
-            <h3>Compare Car Insurance Plans</h3>
-            <div class="qc-header-sub">Fill in your details to view the best available plans</div>
-          </div>
-
-          <div class="qc-body">
-
-            <!-- Car Number -->
-            <div class="form-group">
-              <div class="form-label-pl">
-                <i class="fas fa-id-card"></i> Your Car Number
-              </div>
-              <div class="input-wrap">
-                <input class="form-input car-input has-icon" type="text" placeholder="DL 01 AB 1234" maxlength="13">
-                <i class="fas fa-car input-icon" style="color:var(--blue)"></i>
-              </div>
-            </div>
-
-            <!-- Name + Mobile -->
-            <div class="form-row-2">
-              <div class="form-group">
-                <div class="form-label-pl">
-                  <i class="fas fa-user"></i> Full Name
-                </div>
-                <div class="input-wrap">
-                  <input class="form-input has-icon" type="text" placeholder="Rahul Sharma">
-                  <i class="fas fa-user input-icon"></i>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-label-pl">
-                  <i class="fas fa-mobile-screen"></i> Mobile
-                </div>
-                <div class="input-wrap">
-                  <input class="form-input has-icon" type="tel" placeholder="+91 98765 43210">
-                  <i class="fas fa-mobile-screen input-icon"></i>
-                </div>
-              </div>
-            </div>
-
-            <!-- Email + City -->
-            <div class="form-row-2">
-              <div class="form-group">
-                <div class="form-label-pl">
-                  <i class="fas fa-envelope"></i> Email Address
-                </div>
-                <div class="input-wrap">
-                  <input class="form-input has-icon" type="email" placeholder="rahul@email.com">
-                  <i class="fas fa-envelope input-icon"></i>
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="form-label-pl">
-                  <i class="fas fa-location-dot"></i> City
-                </div>
-                <select class="city-select">
-                  <option value="">Select City</option>
-                  <option>New Delhi</option>
-                  <option>Mumbai</option>
-                  <option>Bangalore</option>
-                  <option>Chennai</option>
-                  <option>Hyderabad</option>
-                  <option>Pune</option>
-                  <option>Kolkata</option>
-                  <option>Ahmedabad</option>
-                  <option>Jaipur</option>
-                  <option>Surat</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- Checkbox -->
-            <label class="check-wrap">
-              <input type="checkbox" checked>
-              <span class="check-label">
-                I accept to receive notifications on <strong>SMS, emails, and WhatsApp</strong> about my insurance plans and policy updates.
-              </span>
-            </label>
-
-            <!-- Submit -->
-            <button class="btn-submit">
-              Submit
-              <i class="fas fa-arrow-right fa-sm"></i>
-            </button>
-
-            <div class="qc-footer">
-              <i class="fas fa-lock"></i>
-              Your data is safe &amp; encrypted · No spam, ever
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+    </section>
 
 
-  <!-- ═══ WHY CHOOSE US ═══ -->
+    <!-- ═══ WHY CHOOSE US ═══ -->
     <section class="why" id="why">
         <div class="container">
             <div class="row align-items-center mb-5 sr">
@@ -207,42 +192,53 @@ error_reporting(0);
     </section>
 
 
-<!-- ═══════════════════════════════════════
-     SECTION 3 – POLICY DESCRIPTION
-═══════════════════════════════════════ -->
-<section class="policy-desc-section">
-  <div class="container">
+    <!-- ═══════════════════════════════════════
+                     SECTION 3 – POLICY DESCRIPTION
+                ═══════════════════════════════════════ -->
+    <section class="policy-desc-section">
+        <div class="container">
 
-    <div class="text-center mb-5 sr">
-      <div class="eyebrow"><span class="dot"></span> Policy Overview</div>
-      <h2 class="sec-h mb-3">Understanding <em>Car Insurance</em></h2>
-      <p class="sec-sub mx-auto">Everything you need to know before making your decision. Car insurance, also known as motor or four-wheeler insurance, is more than just a legal requirement—it's your financial safety net. Whether your car is stolen or damaged due to unforeseen events, car insurance provides crucial compensation to protect you from significant financial loss. We love claims! Smartphone-enabled claims to no hardcopies, you'll get a VIP treatment when you buy a car insurance Car Insurance by us gives an Advance Claim Money for Repair. No hardcopies, no questions on where you’re getting it repaired.</p>
-    </div>
-  </div>
-</section>
-
-
-<!-- Scripts -->
-<script>
-  /* Scroll reveal */
-  const srEls = document.querySelectorAll('.sr');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.1 });
-  srEls.forEach(el => io.observe(el));
+            <div class="text-center mb-5 sr">
+                <div class="eyebrow"><span class="dot"></span> Policy Overview</div>
+                <h2 class="sec-h mb-3">Understanding <em>Car Insurance</em></h2>
+                <p class="sec-sub mx-auto">Everything you need to know before making your decision. Car insurance, also
+                    known as motor or four-wheeler insurance, is more than just a legal requirement—it's your financial
+                    safety net. Whether your car is stolen or damaged due to unforeseen events, car insurance provides
+                    crucial compensation to protect you from significant financial loss. We love claims! Smartphone-enabled
+                    claims to no hardcopies, you'll get a VIP treatment when you buy a car insurance Car Insurance by us
+                    gives an Advance Claim Money for Repair. No hardcopies, no questions on where you’re getting it
+                    repaired.</p>
+            </div>
+        </div>
+    </section>
 
 
+    <!-- Scripts -->
+    <script>
+        /* Scroll reveal */
+        // let srEls = document.querySelectorAll('.sr');
+        // let io = new IntersectionObserver(entries => {
+        //     entries.forEach(e => {
+        //         if (e.isIntersecting) {
+        //             e.target.classList.add('in');
+        //             io.unobserve(e.target);
+        //         }
+        //     });
+        // }, {
+        //     threshold: 0.1
+        // });
+        // srEls.forEach(el => io.observe(el));
 
-  /* Car plate input formatting */
-  const plateInput = document.querySelector('.car-input');
-  if (plateInput) {
-    plateInput.addEventListener('input', function() {
-      this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s]/g, '');
-    });
-  }
-</script>
+
+
+        /* Car plate input formatting */
+        let plateInput = document.querySelector('.car-input');
+        if (plateInput) {
+            plateInput.addEventListener('input', function() {
+                this.value = this.value.toUpperCase().replace(/[^A-Z0-9\s]/g, '');
+            });
+        }
+    </script>
 
 <?php $__env->stopSection(); ?>
 
