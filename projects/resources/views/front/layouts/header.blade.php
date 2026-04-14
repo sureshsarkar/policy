@@ -12,11 +12,9 @@
         <li class="nav-item"><a href="{{url('/')}}" class="nav-link-pl {{ ($data->seo_url=='home')?'active':''}}">Home</a></li>
         <li class="nav-item"><a href="about-us" class="nav-link-pl {{ ($data->seo_url=='about-us')?'active':''}}">About Us</a></li>
 
-          @php
-        $insurances = App\Models\Service::where('publish', 'published')->get(['name', 'seo_url', 'description', 'icon_class']);
-    @endphp
+        
         <!-- INSURANCE PLANS DROPDOWN -->
-        @if($insurances->count()>0)
+        @if($insuranceData->count()>0)
         <li class="nav-item">
           <button class="nav-link-pl">
             Insurance Plans <i class="fas fa-chevron-down chev"></i>
@@ -24,7 +22,7 @@
           <div class="nav-dropdown">
             <div class="dd-grid">
 
-                @foreach($insurances as $ss)
+                @foreach($insuranceData as $ss)
               <a href="{{url($ss->seo_url)}}" class="dd-item">
                 <div class="dd-icon ic-blue"><i class="{{$ss->icon_class}}"></i></div>
                 <div class="dd-text"><h6>{{$ss->name}}</h6><p>{{Str::limit($ss->description,55)}}</p></div>

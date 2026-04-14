@@ -49,10 +49,12 @@ error_reporting(0);
                     <div class="quote-card sr">
                         <div class="qc-header">
                             <div class="qc-header-tag"><i class="fas fa-bolt me-1"></i> Get Instant Quote</div>
-                            <h3>Compare Car Insurance Plans</h3>
+                            <h3>{{$insurance->name}}</h3>
                             <div class="qc-header-sub">Fill in your details to view the best available plans</div>
                         </div>
-                        <form id="getPolicyFromId" action="" method="post">
+                        <form id="getPolicyFromId" action="{{ route('contactPost') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="service" value="{{ $insurance->id }}">
                             <div class="qc-body">
                                 <!-- Name + Mobile -->
                                 <div class="form-row-2">
@@ -61,7 +63,7 @@ error_reporting(0);
                                             <i class="fas fa-user"></i> Full Name <em>*</em>
                                         </div>
                                         <div class="input-wrap">
-                                            <input class="form-input has-icon" type="text" placeholder="Rahul Sharma"
+                                            <input class="form-input has-icon" type="text" placeholder="Rahul Sharma" name="name"
                                                 required>
                                             <i class="fas fa-user input-icon"></i>
                                         </div>
@@ -71,7 +73,7 @@ error_reporting(0);
                                             <i class="fas fa-mobile-screen"></i> Mobile <em>*</em>
                                         </div>
                                         <div class="input-wrap">
-                                            <input class="form-input has-icon" type="tel" placeholder="+91 98765 43210"
+                                            <input class="form-input has-icon" type="tel" placeholder="+91 9999999999" name="mobile"
                                                 required>
                                             <i class="fas fa-mobile-screen input-icon"></i>
                                         </div>
@@ -85,7 +87,7 @@ error_reporting(0);
                                             <i class="fas fa-envelope"></i> Email Address (optional)
                                         </div>
                                         <div class="input-wrap">
-                                            <input class="form-input has-icon" type="email" placeholder="rahul@email.com">
+                                            <input class="form-input has-icon" type="email" name="email" placeholder="rahul@email.com">
                                             <i class="fas fa-envelope input-icon"></i>
                                         </div>
                                     </div>
@@ -94,7 +96,7 @@ error_reporting(0);
                                             <i class="fas fa-location-dot"></i> City
                                         </div>
                                         <div class="input-wrap">
-                                            <input class="form-input has-icon" type="text" placeholder="New Delhi">
+                                            <input class="form-input has-icon" type="text" name="city" placeholder="New Delhi">
                                             <i class="fas fa-location-dot input-icon"></i>
                                         </div>
                                     </div>
@@ -105,7 +107,7 @@ error_reporting(0);
                                         <i class="fa-regular fa-message"></i> Message
                                     </div>
                                     <div class="input-wrap">
-                                        <input class="form-input has-icon" type="text" placeholder="Hello..">
+                                        <input class="form-input has-icon" type="text" placeholder="Hello.." name="message">
                                         <i class="fa-regular fa-message input-icon"></i>
                                     </div>
                                 </div>

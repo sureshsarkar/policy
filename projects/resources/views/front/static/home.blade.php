@@ -18,12 +18,9 @@
 
 
     @include('front.layouts.slider')
-
-    @php
-        $insurances = App\Models\Service::where('publish', 'published')->get();
-    @endphp
+ 
     <!-- ═══ Services ═══ -->
-    @if ($insurances->count() > 0)
+    @if ($insuranceData->count() > 0)
         <section class="categories" id="categories">
             <div class="container">
                 <div class="text-center mb-5 sr">
@@ -36,7 +33,7 @@
 
                 <div class="cat-grid">
 
-                    @foreach ($insurances as $s)
+                    @foreach ($insuranceData as $s)
                         <div class="cat-card sr sr-d1">
                             <div class="cat-icon-bg"><i class="{{ $s->icon_class }}"></i></div>
                             <div class="cat-name">{{ $s->name }}</div>
@@ -162,7 +159,6 @@
                         <i class="fas fa-indian-rupee-sign ben-icon bi1"></i>
                         <h5>Affordable Premium</h5>
                         <p>A small, regular payment that keeps your entire family protected for decades to come.</p>
-                        <span class="ben-metric">₹21/day <span>onwards</span></span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 sr sr-d2">
@@ -170,7 +166,6 @@
                         <i class="fas fa-hand-holding-heart ben-icon bi2"></i>
                         <h5>Death Benefit</h5>
                         <p>Your nominee receives a tax-free lump-sum payout under Section 10(10D) of the IT Act.</p>
-                        <span class="ben-metric">Up to ₹10 Cr <span>tax-free</span></span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 sr sr-d3">
@@ -178,7 +173,6 @@
                         <i class="fas fa-calendar-days ben-icon bi3"></i>
                         <h5>Flexible Policy Term</h5>
                         <p>Choose coverage durations from 5 to 40 years that align perfectly with your life goals.</p>
-                        <span class="ben-metric">5–40 Years <span>coverage</span></span>
                     </div>
                 </div>
                 <div class="col-sm-6 col-lg-3 sr sr-d4">
@@ -186,7 +180,6 @@
                         <i class="fas fa-piggy-bank ben-icon bi4"></i>
                         <h5>Cash Value Growth</h5>
                         <p>Select plans accumulate tax-free cash value over time as a long-term financial asset.</p>
-                        <span class="ben-metric">Grows Tax-Free <span>annually</span></span>
                     </div>
                 </div>
             </div>
@@ -258,84 +251,49 @@
             <div class="row g-0 sr">
                 <div class="col-6 col-md-3">
                     <div class="stat-block">
-                        <div class="stat-num">1M<span>+</span></div>
+                        <div class="stat-num">{{ $setting_data['project completed'] }}<span>+</span></div>
                         <div class="stat-lbl">Happy Customers</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-block">
-                        <div class="stat-num">50<span>+</span></div>
+                        <div class="stat-num">{{ $setting_data['Working hours'] }}<span>+</span></div>
                         <div class="stat-lbl">Insurance Companies</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-block">
-                        <div class="stat-num">98<span>%</span></div>
+                        <div class="stat-num">{{ $setting_data['Experienced Staff'] }}<span>%</span></div>
                         <div class="stat-lbl">Claim Settlement Ratio</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-block">
-                        <div class="stat-num">24<span>/7</span></div>
+                        <div class="stat-num">{{$setting_data["Happy Clients"]}}<span>/7</span></div>
                         <div class="stat-lbl">Customer Support</div>
                     </div>
                 </div>
             </div>
+
+            @php
+                $ourPartners = App\Models\OurClient::where('publish','published')->orderBy('id','desc')->get();
+            @endphp
+            @if ($ourPartners->count()>0)
+            
+            
             <div class="partners-section sr">
-                <div class="partners-lbl">Our Insurance Partners</div>
-
-
-
-
-
+                <div class="partners-lbl">Our Insurance Partners</div> 
                 <div class="slider">
                     <div class="slide-track">
+                        @foreach ($ourPartners as $p) 
                         <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/care_health_insurance_logo.jpg" alt="Image 1">
+                            <img src="{{ asset($p->image??'') }}" alt="{{$p->title}}">
                         </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/future_general.jpg" alt="Image 2">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/hdfc_ergo.jpg" alt="Image 3">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/icic.jpg" alt="Image 4">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/royal_sundaram.jpg" alt="Image 5">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/tata.jpg" alt="Image 6">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/tata.jpg" alt="Image 6">
-                        </div>
-
-                        <!-- Repeating the images to ensure seamless scroll -->
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/care_health_insurance_logo.jpg" alt="Image 1">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/future_general.jpg" alt="Image 2">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/hdfc_ergo.jpg" alt="Image 3">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/icic.jpg" alt="Image 4">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/royal_sundaram.jpg" alt="Image 5">
-                        </div>
-                        <div class="client">
-                            <img src="https://www.policy-lelo.com/clients/tata.jpg" alt="Image 6">
-                        </div>
+                        @endforeach 
                     </div>
-                </div>
-
-
+                </div> 
             </div>
+            @endif
         </div>
     </section>
 
@@ -965,7 +923,7 @@
                 <h2 class="cta-h">Protect What Matters <em>Most.</em></h2>
                 <p class="cta-sub">Get the best insurance plan for your family — in minutes, entirely online.</p>
                 <div class="cta-acts">
-                    <a href="#" class="btn-cta-main"><i class="fas fa-shield-halved"
+                    <a href="#categories" class="btn-cta-main"><i class="fas fa-shield-halved"
                             style="color:var(--blue)"></i> Get Best Insurance Plan</a>
                     <a href="#" class="btn-white-outline">Talk to an Advisor <i
                             class="fas fa-headset fa-sm"></i></a>

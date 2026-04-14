@@ -288,7 +288,7 @@ return [
         /*["text"=>"Social Award","url"=>"admin/weoffer","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],*/
 
 
-        ["text" => "Trending Polls", "url" => "admin/our-clients", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        ["text" => "Our Partners", "url" => "admin/our-clients", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
         //  ["text"=>"Our Teams ","url"=>"admin/our-teams","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],
         ["text" => "Gallery", "url" => "admin/galleries", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
 

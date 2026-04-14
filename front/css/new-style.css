@@ -56,7 +56,7 @@ a{text-decoration:none;color:inherit}
 .nav-item:hover .nav-link-pl .chev{transform:rotate(180deg)}
 
 /* DROPDOWN */
-.nav-dropdown{position:absolute;top:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);box-shadow:var(--sh-xl);padding:10px;min-width:600px;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s;pointer-events:none}
+.nav-dropdown{position:absolute;top:calc(100% + 4px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--white);border:1px solid var(--gray-100);border-radius:var(--r-lg);box-shadow:var(--sh-xl);padding:10px;min-width:600px;opacity:0;visibility:hidden;transition:opacity .25s,transform .25s,visibility .25s;pointer-events:none}
 .nav-item:hover .nav-dropdown{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
 .dd-grid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
 .dd-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;border-radius:var(--r-md);transition:background .2s;cursor:pointer}

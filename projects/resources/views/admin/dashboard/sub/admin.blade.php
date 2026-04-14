@@ -65,7 +65,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3"><strong>Day</strong></div>
+	<div class="col-md-3"><strong>Happy Customers</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">
 
@@ -74,7 +74,7 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-md-3"><strong>Hours</strong></div>
+	<div class="col-md-3"><strong>Insurance Companies</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">
 
@@ -84,7 +84,7 @@
 </div>
 
 <div class="row">
-	<div class="col-md-3"><strong>Minutes</strong></div>
+	<div class="col-md-3"><strong>Claim Settlement Ratio</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">
 
@@ -96,7 +96,7 @@
 
 
 <div class="row">
-	<div class="col-md-3"><strong>Seconds</strong></div>
+	<div class="col-md-3"><strong>Customer Support</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">
 

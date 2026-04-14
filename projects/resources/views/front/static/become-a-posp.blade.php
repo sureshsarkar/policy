@@ -61,11 +61,7 @@ error_reporting(0);
                                         placeholder="Mobile*" minlength="10" maxlength="10"
                                         onkeypress="return digitKeyOnly(event)" onkeyup="useRefShow('mobileId')" required>
                                 </div>
-                                <div class="form-group col-lg-6 col-md-6 col-12">
-                                    <input type="text" name="website" id="websiteId" minlength="3" maxlength="300"
-                                        class="form-control" placeholder="Website*" onkeyup="useRefShow('websiteId')"
-                                        required>
-                                </div>
+                                   <input type="hidden" name="service"  value="Become A Posp">
                             </div>
                             <div class="row">
                                 <div class="form-group col-lg-12 col-md-12 col-12">

@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\OurClient;
 use Illuminate\Http\Request;
 use App\Models\BasicSetting;
 use App\Helper\Upload;
@@ -39,6 +40,13 @@ class DashboardController extends Controller{
     function setPublishData($model,$id,$status){
         if($model=="locations"){
             $data=Location::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
+        if($model=="our-clients"){
+            $data=OurClient::find($id);
             if($data){
                 $data->publish=$status;
                 $data->save();

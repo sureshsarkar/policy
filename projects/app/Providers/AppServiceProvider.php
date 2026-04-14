@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Service;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 use Session;
@@ -37,6 +38,16 @@ class AppServiceProvider extends ServiceProvider
             $setting_data[$a->name]=$a->value;
          }
          View::share('setting_data', $setting_data);
+           View::share('insuranceData', $this->getActiveInsurance());
         
+    }
+
+
+
+
+    public function getActiveInsurance(){
+         
+       return Service::where('publish', 'published')->get(['id','name','seo_url','icon_class','description']);
+    
     }
 }

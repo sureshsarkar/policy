@@ -7,85 +7,86 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
-            <form id="getInTauchFormId" action="" method="post">
-            <div class="modal-body">
-                <div class="quote-card-u sr">
-                    <div class="p-2">
-                        <!-- Select Policy -->
-                        <div class="form-group">
-                            <div class="form-label-pl">
-                                <i class="fas fa-shield-halved"></i> Select Policy <em>*</em>
-                            </div>
-                            <select class="city-select" required>
-                                <option value="">Select Policy</option>
-                                <option>Life Insurance</option>
-                                <option>Health Insurance</option>
-                                <option>Motor Insurance</option>
-                                <option>Term Insurance</option>
-                            </select>
-                        </div>
-
-                        <!-- Name -->
-                        <div class="form-group">
-                            <div class="form-label-pl">
-                                <i class="fas fa-user"></i> Full Name <em>*</em>
-                            </div>
-                            <div class="input-wrap">
-                                <input class="form-input has-icon" type="text" placeholder="Rahul Sharma" required>
-                                <i class="fas fa-user input-icon"></i>
-                            </div>
-                        </div>
-
-                        <!-- MObile + Email -->
-                        <div class="form-row-2">
+            <form id="getInTauchFormId" action="{{ route('contactPost') }}" method="post">
+                @csrf
+                <div class="modal-body">
+                    <div class="quote-card-u sr">
+                        <div class="p-2">
+                            <!-- Select Policy -->
                             <div class="form-group">
                                 <div class="form-label-pl">
-                                    <i class="fas fa-mobile-screen"></i> Mobile <em>*</em>
+                                    <i class="fas fa-shield-halved"></i> Select Policy <em>*</em>
+                                </div>
+                                <select class="city-select" name="service" required>
+                                    <option value="">Select Policy</option>
+                                    @foreach ($insuranceData as $inc)
+                                        <option value="{{ $inc->id }}">{{ $inc->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Name -->
+                            <div class="form-group">
+                                <div class="form-label-pl">
+                                    <i class="fas fa-user"></i> Full Name <em>*</em>
                                 </div>
                                 <div class="input-wrap">
-                                    <input class="form-input has-icon" type="tel" placeholder="+91 98765 43210"
+                                    <input class="form-input has-icon" name="name" type="text" placeholder="Rahul Sharma"
                                         required>
-                                    <i class="fas fa-mobile-screen input-icon"></i>
+                                    <i class="fas fa-user input-icon"></i>
                                 </div>
                             </div>
 
+                            <!-- MObile + Email -->
+                            <div class="form-row-2">
+                                <div class="form-group">
+                                    <div class="form-label-pl">
+                                        <i class="fas fa-mobile-screen"></i> Mobile <em>*</em>
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input class="form-input has-icon" name="mobile" type="tel" placeholder="+91 98765 43210"
+                                            required>
+                                        <i class="fas fa-mobile-screen input-icon"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="form-label-pl">
+                                        <i class="fas fa-envelope"></i> Email Address (optional)
+                                    </div>
+                                    <div class="input-wrap">
+                                        <input class="form-input has-icon" name="email" type="email" placeholder="rahul@email.com">
+                                        <i class="fas fa-envelope input-icon"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Message -->
                             <div class="form-group">
                                 <div class="form-label-pl">
-                                    <i class="fas fa-envelope"></i> Email Address (optional)
+                                    <i class="fa-regular fa-message"></i> Message
                                 </div>
                                 <div class="input-wrap">
-                                    <input class="form-input has-icon" type="email" placeholder="rahul@email.com">
-                                    <i class="fas fa-envelope input-icon"></i>
+                                    <input class="form-input has-icon" name="message" type="text" placeholder="Hello..">
+                                    <i class="fa-regular fa-message input-icon"></i>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Message -->
-                        <div class="form-group">
-                            <div class="form-label-pl">
-                                <i class="fa-regular fa-message"></i> Message
-                            </div>
-                            <div class="input-wrap">
-                                <input class="form-input has-icon" type="text" placeholder="Hello..">
-                                <i class="fa-regular fa-message input-icon"></i>
-                            </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer justify-content-start">
-                <!-- Submit -->
-                <button class="btn-submit">
-                    Submit
-                    <i class="fas fa-arrow-right fa-sm"></i>
-                </button>
+                <div class="modal-footer justify-content-start">
+                    <!-- Submit -->
+                    <button class="btn-submit">
+                        Submit
+                        <i class="fas fa-arrow-right fa-sm"></i>
+                    </button>
 
-                <div class="qc-footer text-center">
-                    <i class="fas fa-lock"></i>
-                    Your data is safe &amp; encrypted · No spam, ever
+                    <div class="qc-footer text-center">
+                        <i class="fas fa-lock"></i>
+                        Your data is safe &amp; encrypted · No spam, ever
+                    </div>
                 </div>
-            </div>
 
             </form>
         </div>
@@ -132,12 +133,9 @@
             <div class="col-sm-6 col-lg-3">
                 <div class="foot-col-h">Insurance</div>
                 <ul class="foot-links">
-                    <li><a href="#">Life Insurance</a></li>
-                    <li><a href="#">Health Insurance</a></li>
-                    <li><a href="#">Motor Insurance</a></li>
-                    <li><a href="#">Term Plans</a></li>
-                    <li><a href="#">Investment Plans</a></li>
-                    <li><a href="#">Group Insurance</a></li>
+                    @foreach ($insuranceData as $in)
+                        <li><a href="{{ url($in->seo_url) }}">{{ $in->name }}</a></li>
+                    @endforeach
                 </ul>
             </div>
 

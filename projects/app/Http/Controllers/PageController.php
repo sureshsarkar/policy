@@ -142,14 +142,13 @@ class PageController extends Controller
     }
 
     function contactPost(Request $request)
-    {
-
-
+    { 
+       
         $validator = Validator::make($request->all(), [
             'name' => "required",
             'email' => 'required|email',
             'mobile' => 'required',
-            'website' => 'required',
+            'service' => 'required',
             "message" => "required|min:10"
         ]);
         if ($validator->fails()) {
@@ -157,7 +156,7 @@ class PageController extends Controller
         }
 
         $request['created_at'] = date("y-m-d H:i:s");
-
+ 
         ContactusRequest::create($request->all());
         $mailData = [
             "type" => "user_thank_you_for_contact_us",
@@ -166,7 +165,7 @@ class PageController extends Controller
         ];
 
 
-        MailHelper::emailSender($mailData); //Mail to user
+        // MailHelper::emailSender($mailData); //Mail to user
 
         $mailData = [
             "type" => "admin_mail_contact_us",
@@ -180,7 +179,7 @@ class PageController extends Controller
         ];
 
 
-        MailHelper::emailSender($mailData); //Mail to Admin
+        // MailHelper::emailSender($mailData); //Mail to Admin
 
         return redirect()->back()->with("success", "Thank you for submitting your query, we will get in touch shortly");
     }

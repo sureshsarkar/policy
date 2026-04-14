@@ -17,8 +17,9 @@ class ContactusRequest extends Model
 		'name',
 		'email',
 		'mobile',
-		'website',
+		'service',
 		'message',
+		'city',
     ];
 
     public static $rules = [

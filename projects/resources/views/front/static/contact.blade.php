@@ -56,9 +56,13 @@ error_reporting(0);
                                         onkeypress="return digitKeyOnly(event)" onkeyup="useRefShow('mobileId')" required>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-12">
-                                    <input type="text" name="website" id="websiteId" minlength="3" maxlength="300"
-                                        class="form-control" placeholder="Website*" onkeyup="useRefShow('websiteId')"
-                                        required>
+                                    <select class="city-select" name="service" required>
+                                    <option value="">Select Policy</option>
+                                    @foreach ($insuranceData as $inc)
+                                        <option value="{{ $inc->id }}">{{ $inc->name }}</option>
+                                    @endforeach
+                                </select>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -78,7 +82,7 @@ error_reporting(0);
                 <div class="col-lg-6 col-md-12 col-12">
                     <div class="map-div">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3613.941871822243!2d55.134505676079435!3d25.06995923684142!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f13458e9e73ed%3A0x644be003b58e37!2sAardys%20properties%20llc!5e0!3m2!1sen!2sin!4v1746016764022!5m2!1sen!2sin"
+                            src="{{ $setting_data['map'] }}"
                             width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
