@@ -19,78 +19,37 @@
 
     @include('front.layouts.slider')
 
-    <!-- ═══ CATEGORIES ═══ -->
-    <section class="categories" id="categories">
-        <div class="container">
-            <div class="text-center mb-5 sr">
-                <div class="section-eyebrow"><span class="dot"></span> Insurance Products</div>
-                <h2 class="section-h mb-3">Explore Our <em>Insurance Plans</em></h2>
-                <p class="section-p mx-auto">Every policy is tailored to protect what matters most at every stage of
-                    life.</p>
+    @php
+        $insurances = App\Models\Service::where('publish', 'published')->get();
+    @endphp
+    <!-- ═══ Services ═══ -->
+    @if ($insurances->count() > 0)
+        <section class="categories" id="categories">
+            <div class="container">
+                <div class="text-center mb-5 sr">
+                    <div class="section-eyebrow"><span class="dot"></span> Insurance Products</div>
+                    <h2 class="section-h mb-3">Explore Our <em>Insurance Plans</em></h2>
+                    <p class="section-p mx-auto">Every policy is tailored to protect what matters most at every stage of
+                        life.
+                    </p>
+                </div>
+
+                <div class="cat-grid">
+
+                    @foreach ($insurances as $s)
+                        <div class="cat-card sr sr-d1">
+                            <div class="cat-icon-bg"><i class="{{ $s->icon_class }}"></i></div>
+                            <div class="cat-name">{{ $s->name }}</div>
+                            <div class="cat-desc">{{ $s->description }}</div>
+                            <a href="{{ url($s->seo_url) }}" class="cat-link">View Plans <div class="cat-link-icon"><i
+                                        class="fas fa-arrow-right"></i></div></a>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="cat-grid">
-                <div class="cat-card sr sr-d1">
-                    <div class="cat-icon-bg"><i class="fas fa-shield-halved"></i></div>
-                    <div class="cat-name">Life Insurance</div>
-                    <div class="cat-desc">Lifetime protection ensuring your family's financial stability no matter what
-                        happens.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-                <div class="cat-card sr sr-d2">
-                    <div class="cat-icon-bg"><i class="fas fa-heart-pulse"></i></div>
-                    <div class="cat-name">Health Insurance</div>
-                    <div class="cat-desc">Cashless treatment at 10,000+ network hospitals across India with zero
-                        paperwork.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-                <div class="cat-card sr sr-d3">
-                    <div class="cat-icon-bg"><i class="fas fa-car"></i></div>
-                    <div class="cat-name">Motor Insurance</div>
-                    <div class="cat-desc">Protect your vehicle from accidents, theft, natural calamities and third-party
-                        claims.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-                <div class="cat-card sr sr-d4">
-                    <div class="cat-icon-bg"><i class="fas fa-file-contract"></i></div>
-                    <div class="cat-name">Term Insurance</div>
-                    <div class="cat-desc">Maximum life cover at the most affordable premiums — pure protection for your
-                        family.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
+        </section>
 
-                <div class="cat-card sr sr-d2">
-                    <div class="cat-icon-bg"><i class="fas fa-heart-pulse"></i></div>
-                    <div class="cat-name">Health Insurance</div>
-                    <div class="cat-desc">Cashless treatment at 10,000+ network hospitals across India with zero
-                        paperwork.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-                <div class="cat-card sr sr-d3">
-                    <div class="cat-icon-bg"><i class="fas fa-car"></i></div>
-                    <div class="cat-name">Motor Insurance</div>
-                    <div class="cat-desc">Protect your vehicle from accidents, theft, natural calamities and third-party
-                        claims.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-                <div class="cat-card sr sr-d4">
-                    <div class="cat-icon-bg"><i class="fas fa-file-contract"></i></div>
-                    <div class="cat-name">Term Insurance</div>
-                    <div class="cat-desc">Maximum life cover at the most affordable premiums — pure protection for your
-                        family.</div>
-                    <a href="#" class="cat-link">View Plans <div class="cat-link-icon"><i
-                                class="fas fa-arrow-right"></i></div></a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
+    @endif
     <div class="divider"></div>
 
     <!-- ═══ WHY CHOOSE US ═══ -->
@@ -908,80 +867,95 @@
 
 
     <!-- ═══════════════════════════════════════
-     SECTION 6 – FAQ
-═══════════════════════════════════════ -->
-<section class="faq-section">
-  <div class="container">
+             SECTION 6 – FAQ
+        ═══════════════════════════════════════ -->
+    <section class="faq-section">
+        <div class="container">
 
-    <div class="row align-items-center mb-5 sr">
-      <div class="col-lg-12">
-        <h2 class="section-h mb-3 text-center">Frequently Asked <em>Questions</em></h2>
-        {{-- <div class="eyebrow"><span class="dot"></span> FAQ</div>
+            <div class="row align-items-center mb-5 sr">
+                <div class="col-lg-12">
+                    <h2 class="section-h mb-3 text-center">Frequently Asked <em>Questions</em></h2>
+                    {{-- <div class="eyebrow"><span class="dot"></span> FAQ</div>
         <h2 class="sec-h">Frequently Asked <em>Questions</em></h2> --}}
-      </div>
-      {{-- <div class="col-lg-5 offset-lg-2 mt-3 mt-lg-0">
+                </div>
+                {{-- <div class="col-lg-5 offset-lg-2 mt-3 mt-lg-0">
         <p class="sec-sub">Everything you need to know about car insurance — answered simply and clearly.</p>
       </div> --}}
-    </div>
+            </div>
 
-    <div class="row">
-      <div class="col-lg-12 mx-auto sr">
+            <div class="row">
+                <div class="col-lg-12 mx-auto sr">
 
-        <div class="faq-item open">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Is car insurance mandatory in India?</span>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-a">
-            Yes, third-party car insurance is legally mandatory for all vehicles in India under the Motor Vehicles Act, 1988. Driving without valid insurance can result in a fine of ₹2,000 for the first offence and ₹4,000 for subsequent offences, along with potential imprisonment. Comprehensive insurance, while not legally required, offers far broader protection.
-          </div>
+                    <div class="faq-item open">
+                        <div class="faq-q" onclick="toggleFaq(this)">
+                            <span class="faq-q-text">Is car insurance mandatory in India?</span>
+                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="faq-a">
+                            Yes, third-party car insurance is legally mandatory for all vehicles in India under the Motor
+                            Vehicles Act, 1988. Driving without valid insurance can result in a fine of ₹2,000 for the first
+                            offence and ₹4,000 for subsequent offences, along with potential imprisonment. Comprehensive
+                            insurance, while not legally required, offers far broader protection.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">
+                            <span class="faq-q-text">What is the difference between comprehensive and third-party
+                                insurance?</span>
+                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="faq-a">
+                            Third-party insurance only covers damages or injuries you cause to other people or their
+                            property. Comprehensive insurance provides all the benefits of third-party cover plus protection
+                            for your own vehicle against accidents, theft, fire, natural calamities, and more. Comprehensive
+                            is recommended for vehicles under 5 years old.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">
+                            <span class="faq-q-text">How does the cashless claim process work?</span>
+                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="faq-a">
+                            In a cashless claim, you take your damaged vehicle to any of the insurer's 20,000+ network
+                            garages. The insurer directly settles the repair bill with the garage — you only pay for
+                            non-covered items or your deductible. Our claim support team is available 24/7 to guide you
+                            through every step and ensure swift settlement.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">
+                            <span class="faq-q-text">What is No Claim Bonus (NCB) and how does it work?</span>
+                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="faq-a">
+                            NCB is a discount rewarded for not making any claims during your policy year. It starts at 20%
+                            for the first claim-free year and can go up to 50% after five consecutive claim-free years. NCB
+                            belongs to you (the policyholder), not the vehicle, so you can transfer it when you buy a new
+                            car or switch insurers.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="faq-q" onclick="toggleFaq(this)">
+                            <span class="faq-q-text">Can I buy car insurance online instantly?</span>
+                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="faq-a">
+                            Absolutely. On PolicyLelo, you can compare plans, make payment, and receive your official policy
+                            document — all within 3 minutes, completely online. No agent visits, no paperwork, no waiting.
+                            For renewals, the process is even faster as your vehicle details are pre-filled.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
-
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">What is the difference between comprehensive and third-party insurance?</span>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-a">
-            Third-party insurance only covers damages or injuries you cause to other people or their property. Comprehensive insurance provides all the benefits of third-party cover plus protection for your own vehicle against accidents, theft, fire, natural calamities, and more. Comprehensive is recommended for vehicles under 5 years old.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">How does the cashless claim process work?</span>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-a">
-            In a cashless claim, you take your damaged vehicle to any of the insurer's 20,000+ network garages. The insurer directly settles the repair bill with the garage — you only pay for non-covered items or your deductible. Our claim support team is available 24/7 to guide you through every step and ensure swift settlement.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">What is No Claim Bonus (NCB) and how does it work?</span>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-a">
-            NCB is a discount rewarded for not making any claims during your policy year. It starts at 20% for the first claim-free year and can go up to 50% after five consecutive claim-free years. NCB belongs to you (the policyholder), not the vehicle, so you can transfer it when you buy a new car or switch insurers.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <div class="faq-q" onclick="toggleFaq(this)">
-            <span class="faq-q-text">Can I buy car insurance online instantly?</span>
-            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-          </div>
-          <div class="faq-a">
-            Absolutely. On PolicyLelo, you can compare plans, make payment, and receive your official policy document — all within 3 minutes, completely online. No agent visits, no paperwork, no waiting. For renewals, the process is even faster as your vehicle details are pre-filled.
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-  </div>
-</section>
+    </section>
 
 
     <!-- ═══ CTA BANNER ═══ -->
@@ -1005,12 +979,12 @@
 
     <script>
         /* FAQ toggle */
-  function toggleFaq(el) {
-    const item = el.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+        function toggleFaq(el) {
+            const item = el.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
 
         // owlCarousel start
         document.addEventListener("DOMContentLoaded", function() {
@@ -1027,7 +1001,7 @@
                 },
 
 
-                  navigation: {
+                navigation: {
                     nextEl: ".blog-next",
                     prevEl: ".blog-prev"
                 },

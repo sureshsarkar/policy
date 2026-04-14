@@ -10,8 +10,8 @@ class ServiceController extends Controller{
 
     public function __construct(Service $model){
         $this->model=$model;
-        $this->admin_base_url="services.index";
-        $this->admin_view="admin.services";
+        $this->admin_base_url="insurance-plan.index";
+        $this->admin_view="admin.insurance-plan";
     }
 
 
@@ -35,10 +35,10 @@ class ServiceController extends Controller{
         }
         $data=$request->all();
         if ($request->hasFile("image")) {
-            $data['image'] = Upload::fileUpload($request->file("image"),"services");
+            $data['image'] = Upload::fileUpload($request->file("image"),"insurance-plan");
         }
         if ($request->hasFile("bannerImage")) {
-            $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"services");
+            $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"insurance-plan");
         }
         $this->model::create($data);
         return redirect()->route($this->admin_base_url)->with("success","Successfully Added");
@@ -71,10 +71,10 @@ class ServiceController extends Controller{
         if($exist){
             $data=$request->all();
             if ($request->hasFile("image")) {
-                $data['image'] = Upload::fileUpload($request->file("image"),"services");
+                $data['image'] = Upload::fileUpload($request->file("image"),"insurance-plan");
             }
             if ($request->hasFile("bannerImage")) {
-                $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"services");
+                $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"insurance-plan");
             }
             $this->model::find($id)->update($data);
             return redirect()->route($this->admin_base_url)->with("success","Successfully Updated");

@@ -12,40 +12,29 @@
         <li class="nav-item"><a href="{{url('/')}}" class="nav-link-pl {{ ($data->seo_url=='home')?'active':''}}">Home</a></li>
         <li class="nav-item"><a href="about-us" class="nav-link-pl {{ ($data->seo_url=='about-us')?'active':''}}">About Us</a></li>
 
+          @php
+        $insurances = App\Models\Service::where('publish', 'published')->get(['name', 'seo_url', 'description', 'icon_class']);
+    @endphp
         <!-- INSURANCE PLANS DROPDOWN -->
+        @if($insurances->count()>0)
         <li class="nav-item">
           <button class="nav-link-pl">
             Insurance Plans <i class="fas fa-chevron-down chev"></i>
           </button>
           <div class="nav-dropdown">
             <div class="dd-grid">
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-blue"><i class="fas fa-shield-halved"></i></div>
-                <div class="dd-text"><h6>Life Insurance</h6><p>Lifetime protection for your family's financial security and future</p></div>
+
+                @foreach($insurances as $ss)
+              <a href="{{url($ss->seo_url)}}" class="dd-item">
+                <div class="dd-icon ic-blue"><i class="{{$ss->icon_class}}"></i></div>
+                <div class="dd-text"><h6>{{$ss->name}}</h6><p>{{Str::limit($ss->description,55)}}</p></div>
               </a>
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-teal"><i class="fas fa-heart-pulse"></i></div>
-                <div class="dd-text"><h6>Health Insurance</h6><p>Cashless treatment at 10,000+ network hospitals across India</p></div>
-              </a>
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-orange"><i class="fas fa-car"></i></div>
-                <div class="dd-text"><h6>Motor Insurance</h6><p>Comprehensive cover for your vehicle against accidents and theft</p></div>
-              </a>
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-indigo"><i class="fas fa-file-contract"></i></div>
-                <div class="dd-text"><h6>Term Insurance</h6><p>Maximum life cover at the most affordable premiums available</p></div>
-              </a>
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-rose"><i class="fas fa-chart-line"></i></div>
-                <div class="dd-text"><h6>Investment Plans</h6><p>ULIPs and endowment plans for long-term wealth creation</p></div>
-              </a>
-              <a href="{{url('/')}}" class="dd-item">
-                <div class="dd-icon ic-amber"><i class="fas fa-users"></i></div>
-                <div class="dd-text"><h6>Group Insurance</h6><p>Customised employee benefits and group coverage solutions</p></div>
-              </a>
+              @endforeach
+
             </div>
           </div>
         </li>
+        @endif
 
         <li class="nav-item"><a href="become-a-posp" class="nav-link-pl {{ ($data->seo_url=='become-a-posp')?'active':''}}">Become A POSP</a></li>
         <li class="nav-item"><a href="contact-us" class="nav-link-pl {{ ($data->seo_url=='contact-us')?'active':''}}">Contact Us</a></li>

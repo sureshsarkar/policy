@@ -282,7 +282,7 @@ return [
         // ["text"=>"Voter Users","url"=>"admin/voters","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],
 
         /* ["text"=>"Testimonials List","url"=>"admin/testimonials","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],*/
-        ["text" => "Join Vote", "url" => "admin/services", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        ["text" => "Insurance Plan", "url" => "admin/insurance-plan", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
         ["text" => "Working Process", "url" => "admin/welcome_packages", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
 
         /*["text"=>"Social Award","url"=>"admin/weoffer","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],*/

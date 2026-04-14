@@ -383,8 +383,8 @@ class Helper{
 			/*"reviews"=>"reviews",*/
 			"gallery"=>"gallery",
 			"faq"=>"FAQ",
-			/*"careerCategorList"=>"Job Category",
-			"services"=>"services",*/
+			/*"careerCategorList"=>"Job Category", */
+            "services"=>"services",
 			"terms-of-service"=>"Terms Of Service",
 			"direct-mail"=>"direct mail",
 			"email-marketing-campaign"=>"email marketing campaign",

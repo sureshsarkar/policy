@@ -14,10 +14,10 @@ error_reporting(0);
 @stop
 @section('container')
     @php
-        $name = $data->name;
+        $name = $insurance->name;
         $bannerImage = asset('front/images/inner-banner.png');
-        if ($data->bannerImage) {
-            $bannerImage = asset($data->bannerImage);
+        if ($insurance->bannerImage) {
+            $bannerImage = asset($insurance->bannerImage);
         }
     @endphp
 

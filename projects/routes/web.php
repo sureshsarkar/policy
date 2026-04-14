@@ -114,7 +114,7 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => ["aut
         'collections' => CollectionController::class,
         'deals' => DealController::class,
         'question' => QuestionController::class,
-        'services' => ServiceController::class,
+        'insurance-plan' => ServiceController::class,
 
         'contact-us-enquiries' => ContactusRequestController::class,
 

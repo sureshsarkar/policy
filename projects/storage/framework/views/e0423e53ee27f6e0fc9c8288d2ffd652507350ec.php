@@ -15,10 +15,10 @@ error_reporting(0);
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('container'); ?>
     <?php
-        $name = $data->name;
+        $name = $insurance->name;
         $bannerImage = asset('front/images/inner-banner.png');
-        if ($data->bannerImage) {
-            $bannerImage = asset($data->bannerImage);
+        if ($insurance->bannerImage) {
+            $bannerImage = asset($insurance->bannerImage);
         }
     ?>
 

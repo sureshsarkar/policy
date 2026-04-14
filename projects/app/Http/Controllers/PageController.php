@@ -335,6 +335,8 @@ class PageController extends Controller
 
     public function index(Request $request)
     {
+
+
         $data = Cms::where("seo_url", 'home')->first();
         $BreakingNews = NewsPost::where('breaking_news', 'yes')->where('publish', 'published')->orderBy('id', 'desc')->limit(10)->select('id', 'name', 'seo_url', 'bannerImage')->get();
         // return $TrendingNews = NewsPost::where('trending_news','yes')->where('publish','published')->orderBy('id', 'desc')->limit(10)->select('id', 'name', 'seo_url','bannerImage')->get();
@@ -351,7 +353,7 @@ class PageController extends Controller
 
     public function dynamicDataCategory(Request $request, $seo_url)
     {
-  
+
         if ($seo_url == "home") {
             return redirect("/");
             //  return redirect()->route('front-home');
@@ -396,6 +398,16 @@ class PageController extends Controller
             $templete = "front.static.blogs";
             return view($templete, compact("data", "blogs"));
         }
+
+
+        $data = Cms::where("seo_url", 'policy-detail')->first();
+
+        if ($data) {
+            $insurance = Service::where("seo_url", $seo_url)->first();
+            $templete = "front.static.".$data->templete;
+            return view($templete, compact("data", "insurance"));
+        }
+
 
         return view("front.static.404");
     }

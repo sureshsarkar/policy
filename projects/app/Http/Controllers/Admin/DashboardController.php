@@ -16,7 +16,7 @@ use App\Models\PropertyRate;
 use App\Models\Country;
 use App\Models\Slider;
 use App\Models\Deal;
-
+use App\Models\Service;
 use Hash;
 use Auth;
 use DB;
@@ -44,6 +44,16 @@ class DashboardController extends Controller{
                 $data->save();
             }
         }
+
+            if($model=="insurance-plan"){
+            $data=Service::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
+
+
         if($model=="stores"){
             $data=Store::find($id);
             if($data){
@@ -97,9 +107,9 @@ class DashboardController extends Controller{
     }
 
 
-    
+
     function updateNewsType(Request $request){
-            $data=NewsPost::find($request->id); 
+            $data=NewsPost::find($request->id);
             if($request->type=='breaking_news'){
                 $data->breaking_news = $request->value;
             }
@@ -109,11 +119,11 @@ class DashboardController extends Controller{
             if($request->type=='top_stories_news'){
                 $data->top_stories_news = $request->value;
             }
-             
-            if($data){ 
+
+            if($data){
                 $data->save();
             }
-         
+
         return redirect()->back()->with("success","News type updated successfully");
     }
 
@@ -171,8 +181,8 @@ class DashboardController extends Controller{
         }
         return redirect()->back()->with("success","Status changed successfully");
     }
-    
-    
+
+
 
     function multipleDelete(Request $request,$model){
       foreach($request->id as $id){
@@ -227,13 +237,13 @@ class DashboardController extends Controller{
       }
     }
 
-    
+
    function index(){
        //return redirect('admin/properties');
    		return view("admin.dashboard.index");
    }
-  
-   
+
+
    function mediasDelete(Request $request){
        $path=public_path().'/uploads/uploads/'.$request->file;
        if(is_file($path)){
@@ -274,7 +284,7 @@ class DashboardController extends Controller{
                 $value = Upload::logouploadData($value);
             }
             if($name=="footer_logo"){
-                
+
                 $value = Upload::logouploadData($value);
                // / dd($value);
             }
@@ -294,7 +304,7 @@ class DashboardController extends Controller{
     function changePassword(){
     	return view("admin.dashboard.changePassword");
     }
-    
+
     function changePasswordPost(Request $request){
           $password = $request->new_password;
 
