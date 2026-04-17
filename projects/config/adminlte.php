@@ -257,15 +257,15 @@ return [
         // ["text" => "Video Section", "url" => "admin/video-section", "permission" => "admin", 'icon' => 'fas fa-fw fa-image'],
 
 
-        [
-            'text'    => 'Voting',
-            'icon'    => 'fas fa-fw fa-list-alt',
-            'submenu' => [
-                ["text" => "Voting Categories", "url" => "admin/deals", "permission" => "admin", 'icon' => 'fas fa-fw fa-plus'],
-                ["text" => "Question", "url" => "admin/question", "permission" => "admin", 'icon' => 'fas fa-fw fa-list-alt'],
-            ]
+        // [
+        //     'text'    => 'Voting',
+        //     'icon'    => 'fas fa-fw fa-list-alt',
+        //     'submenu' => [
+        //         ["text" => "Voting Categories", "url" => "admin/deals", "permission" => "admin", 'icon' => 'fas fa-fw fa-plus'],
+        //         ["text" => "Question", "url" => "admin/question", "permission" => "admin", 'icon' => 'fas fa-fw fa-list-alt'],
+        //     ]
 
-        ],
+        // ],
 
         // [
         //      'text'    => 'Participate',
@@ -281,16 +281,18 @@ return [
         ["text" => "Users", "url" => "admin/customers", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
         // ["text"=>"Voter Users","url"=>"admin/voters","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],
 
-        /* ["text"=>"Testimonials List","url"=>"admin/testimonials","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],*/
+         ["text"=>"Testimonials List","url"=>"admin/testimonials","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],
         ["text" => "Insurance Plan", "url" => "admin/insurance-plan", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
-        ["text" => "Working Process", "url" => "admin/welcome_packages", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        ["text" => "Conversion Steps", "url" => "admin/welcome_packages", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        ["text" => "Why Choose Us", "url" => "admin/why-choose-us", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        ["text" => "Key Features", "url" => "admin/key-features", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
 
         /*["text"=>"Social Award","url"=>"admin/weoffer","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],*/
 
 
         ["text" => "Our Partners", "url" => "admin/our-clients", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
         //  ["text"=>"Our Teams ","url"=>"admin/our-teams","permission"=>"admin",'icon' => 'fas fa-fw fa-shopping-basket'],
-        ["text" => "Gallery", "url" => "admin/galleries", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
+        // ["text" => "Gallery", "url" => "admin/galleries", "permission" => "admin", 'icon' => 'fas fa-fw fa-shopping-basket'],
 
 
 
@@ -299,7 +301,7 @@ return [
 
 
 
-        // ["text" => "FAQ's", "url" => "admin/faqs", "permission" => "admin", 'icon' => 'fas fa-fw fa-user'],
+        ["text" => "FAQ's", "url" => "admin/faqs", "permission" => "admin", 'icon' => 'fas fa-fw fa-user'],
 
 
 

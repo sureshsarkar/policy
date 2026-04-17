@@ -64,11 +64,4 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-md-3"><strong><i class="fas fa-fw fa-telegram"></i> Skype</strong></div>
-	<div class="col-md-9">
-		<div class="form-group">
-			<input type="text" class="form-control"  name="input['skype']" value="<?php echo e(ModelHelper::getDataFromSetting('skype')); ?>"  placeholder="Skype Link">
-		</div>
-	</div>
-</div><?php /**PATH E:\xampp 8.2\htdocs\laravel\kharido-policy\projects\resources\views/admin/dashboard/sub/social.blade.php ENDPATH**/ ?>
+<?php /**PATH E:\xampp 8.2\htdocs\laravel\kharido-policy\projects\resources\views/admin/dashboard/sub/social.blade.php ENDPATH**/ ?>

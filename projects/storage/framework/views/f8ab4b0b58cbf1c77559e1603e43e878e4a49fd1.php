@@ -20,17 +20,14 @@
 
 
     <?php echo $__env->make('front.layouts.slider', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
- 
+
     <!-- ═══ Services ═══ -->
     <?php if($insuranceData->count() > 0): ?>
         <section class="categories" id="categories">
             <div class="container">
                 <div class="text-center mb-5 sr">
-                    <div class="section-eyebrow"><span class="dot"></span> Insurance Products</div>
-                    <h2 class="section-h mb-3">Explore Our <em>Insurance Plans</em></h2>
-                    <p class="section-p mx-auto">Every policy is tailored to protect what matters most at every stage of
-                        life.
-                    </p>
+                    <?php echo $data->shortDescription; ?>
+
                 </div>
 
                 <div class="cat-grid">
@@ -46,148 +43,89 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
-        </section>
+        </section> 
+    <?php endif; ?>
 
+    <div class="divider"></div>
+    <?php
+        $whychooseus = App\Models\WhyChooseUs::where('publish', 'published')->orderBy('ordering')->get();
+    ?>
+    <?php if($whychooseus->count() > 0): ?>
+        <!-- ═══ WHY CHOOSE US ═══ -->
+        <section class="why" id="why">
+            <div class="container">
+                <div class="row align-items-center mb-5 sr">
+                  <?php echo $data->mediumDescription; ?>
+
+                </div>
+                <div class="row g-4">
+                    <?php $__currentLoopData = $whychooseus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $wc): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-sm-6 col-lg-3 sr sr-d1">
+                            <div class="why-card">
+                                <div class="why-icon wi-w<?php echo e($wc->ordering); ?>"><i class="fas fa-chart-bar"></i></div>
+                                <h5><?php echo e($wc->title); ?></h5>
+                                <p><?php echo e($wc->descreption); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
+        </section>
+    <?php endif; ?>
+
+    <?php
+        $workingProcess = App\Models\WelcomePackage::where('publish', 'published')->orderBy('ordering')->get();
+    ?>
+    <?php if($workingProcess->count() > 0): ?>
+        <!-- ═══ HOW IT WORKS ═══ -->
+        <section class="hiw" id="how">
+            <div class="container">
+                <div class="text-center mb-5 sr">
+                    <?php echo $data->longDescription; ?>
+
+                </div>
+                <div class="hiw-steps sr">
+                    <div class="hiw-conn"></div>
+
+                    <?php $__currentLoopData = $workingProcess; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $w): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="hiw-step">
+                            <div class="hiw-num hn<?php echo e($w->ordering); ?>"><i class="<?php echo e($w->seo_url); ?>"></i>
+                                <div class="step-badge"><?php echo e($w->ordering); ?></div>
+                            </div>
+                            <h6><?php echo e($w->name); ?></h6>
+                            <p><?php echo e($w->longDescription); ?></p>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </div>
+            </div>
+        </section>
     <?php endif; ?>
     <div class="divider"></div>
+    <?php
+        $Keyfeature = App\Models\KeyFeature::where('publish', 'published')->orderBy('ordering')->get();
+    ?>
+    <?php if($Keyfeature->count() > 0): ?>
+        <!-- ═══ BENEFITS ═══ -->
+        <section class="benefits" id="benefits">
+            <div class="container">
+                <div class="text-center mb-5 sr">
+                  <?php echo $data->longDescriptiontwo; ?>
 
-    <!-- ═══ WHY CHOOSE US ═══ -->
-    <section class="why" id="why">
-        <div class="container">
-            <div class="row align-items-center mb-5 sr">
-                <div class="col-lg-5">
-                    <div class="section-eyebrow"><span class="dot"></span> Why PolicyLelo</div>
-                    <h2 class="section-h">Why Millions <em>Trust Us</em></h2>
                 </div>
-                <div class="col-lg-6 offset-lg-1 mt-3 mt-lg-0">
-                    <p class="section-p">We've simplified insurance — no jargon, no fine print surprises. Just
-                        transparent, fast, and affordable coverage for every Indian family.</p>
-                </div>
-            </div>
-            <div class="row g-4">
-                <div class="col-sm-6 col-lg-3 sr sr-d1">
-                    <div class="why-card">
-                        <div class="why-icon wi-blue"><i class="fas fa-chart-bar"></i></div>
-                        <h5>Compare 50+ Plans</h5>
-                        <p>Instantly compare premiums, features, and claim ratios from every major insurer in India,
-                            side by side.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d2">
-                    <div class="why-card">
-                        <div class="why-icon wi-teal"><i class="fas fa-bolt"></i></div>
-                        <h5>Instant Issuance</h5>
-                        <p>Receive your official policy document to your inbox within minutes of completing your
-                            purchase.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d3">
-                    <div class="why-card">
-                        <div class="why-icon wi-orange"><i class="fas fa-headset"></i></div>
-                        <h5>24/7 Claim Support</h5>
-                        <p>Dedicated claim advisors guide you through every step — paperwork, submission, and
-                            settlement.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d4">
-                    <div class="why-card">
-                        <div class="why-icon wi-purple"><i class="fas fa-award"></i></div>
-                        <h5>IRDAI Regulated</h5>
-                        <p>All partner insurers are IRDAI-registered with proven track records and high claim settlement
-                            ratios.</p>
-                    </div>
+                <div class="row g-4">
+                    <?php $__currentLoopData = $Keyfeature; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="col-sm-6 col-lg-3 sr sr-d1">
+                            <div class="benefit-card bc1">
+                                <i class="<?php echo e($f->icon_class); ?>"></i>
+                                <h5><?php echo e($f->title); ?></h5>
+                                <p><?php echo e($f->descreption); ?></p>
+                            </div>
+                        </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- ═══ HOW IT WORKS ═══ -->
-    <section class="hiw" id="how">
-        <div class="container">
-            <div class="text-center mb-5 sr">
-                <div class="section-eyebrow"><span class="dot"></span> Simple Process</div>
-                <h2 class="section-h mb-3">Covered in <em>4 Steps</em></h2>
-                <p class="section-p mx-auto">From comparison to coverage — the entire process takes less than 10
-                    minutes, entirely online.</p>
-            </div>
-            <div class="hiw-steps sr">
-                <div class="hiw-conn"></div>
-                <div class="hiw-step">
-                    <div class="hiw-num hn1"><i class="fas fa-magnifying-glass-chart"></i>
-                        <div class="step-badge">1</div>
-                    </div>
-                    <h6>Compare Plans</h6>
-                    <p>Browse and compare top insurance plans based on your age, income, and coverage requirements.</p>
-                </div>
-                <div class="hiw-step">
-                    <div class="hiw-num hn2"><i class="fas fa-check-to-slot"></i>
-                        <div class="step-badge">2</div>
-                    </div>
-                    <h6>Select Best Policy</h6>
-                    <p>Choose the plan that suits you with guidance from our IRDAI-certified insurance advisors.</p>
-                </div>
-                <div class="hiw-step">
-                    <div class="hiw-num hn3"><i class="fas fa-credit-card"></i>
-                        <div class="step-badge">3</div>
-                    </div>
-                    <h6>Secure Payment</h6>
-                    <p>Pay safely via UPI, net banking, or card. 256-bit SSL encrypted — 100% secure transaction.</p>
-                </div>
-                <div class="hiw-step">
-                    <div class="hiw-num hn4"><i class="fas fa-file-circle-check"></i>
-                        <div class="step-badge">4</div>
-                    </div>
-                    <h6>Instant Policy</h6>
-                    <p>Your official policy document arrives instantly in your inbox. You are now fully protected.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="divider"></div>
-
-    <!-- ═══ BENEFITS ═══ -->
-    <section class="benefits" id="benefits">
-        <div class="container">
-            <div class="text-center mb-5 sr">
-                <div class="section-eyebrow"><span class="dot"></span> Life Insurance Benefits</div>
-                <h2 class="section-h mb-3">Key Features to <em>Understand</em></h2>
-                <p class="section-p mx-auto">Understanding these building blocks helps you choose the best policy for
-                    your life stage and goals.</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-sm-6 col-lg-3 sr sr-d1">
-                    <div class="benefit-card bc1">
-                        <i class="fas fa-indian-rupee-sign ben-icon bi1"></i>
-                        <h5>Affordable Premium</h5>
-                        <p>A small, regular payment that keeps your entire family protected for decades to come.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d2">
-                    <div class="benefit-card bc2">
-                        <i class="fas fa-hand-holding-heart ben-icon bi2"></i>
-                        <h5>Death Benefit</h5>
-                        <p>Your nominee receives a tax-free lump-sum payout under Section 10(10D) of the IT Act.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d3">
-                    <div class="benefit-card bc3">
-                        <i class="fas fa-calendar-days ben-icon bi3"></i>
-                        <h5>Flexible Policy Term</h5>
-                        <p>Choose coverage durations from 5 to 40 years that align perfectly with your life goals.</p>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3 sr sr-d4">
-                    <div class="benefit-card bc4">
-                        <i class="fas fa-piggy-bank ben-icon bi4"></i>
-                        <h5>Cash Value Growth</h5>
-                        <p>Select plans accumulate tax-free cash value over time as a long-term financial asset.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+        </section>
+    <?php endif; ?>
     <style>
         .slider {
             /* background: white; */
@@ -271,557 +209,194 @@
                 </div>
                 <div class="col-6 col-md-3">
                     <div class="stat-block">
-                        <div class="stat-num"><?php echo e($setting_data["Happy Clients"]); ?><span>/7</span></div>
+                        <div class="stat-num"><?php echo e($setting_data['Happy Clients']); ?><span>/7</span></div>
                         <div class="stat-lbl">Customer Support</div>
                     </div>
                 </div>
             </div>
 
             <?php
-                $ourPartners = App\Models\OurClient::where('publish','published')->orderBy('id','desc')->get();
+                $ourPartners = App\Models\OurClient::where('publish', 'published')->orderBy('id', 'desc')->get();
             ?>
-            <?php if($ourPartners->count()>0): ?>
-            
-            
-            <div class="partners-section sr">
-                <div class="partners-lbl">Our Insurance Partners</div> 
-                <div class="slider">
-                    <div class="slide-track">
-                        <?php $__currentLoopData = $ourPartners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
-                        <div class="client">
-                            <img src="<?php echo e(asset($p->image??'')); ?>" alt="<?php echo e($p->title); ?>">
+            <?php if($ourPartners->count() > 0): ?>
+
+
+                <div class="partners-section sr">
+                    <div class="partners-lbl">Our Insurance Partners</div>
+                    <div class="slider">
+                        <div class="slide-track">
+                            <?php $__currentLoopData = $ourPartners; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $p): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="client">
+                                    <img src="<?php echo e(asset($p->image ?? '')); ?>" alt="<?php echo e($p->title); ?>">
+                                </div>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
                     </div>
-                </div> 
-            </div>
+                </div>
             <?php endif; ?>
         </div>
     </section>
 
-    <!-- ═══ BLOGS ═══ -->
-    <section class="blogs">
-        <div class="container">
-
-            <div class="text-center mb-5 sr">
-                <div class="section-eyebrow"><span class="dot"></span> Policy Updates</div>
-                <h2 class="section-h mb-3">Our Latest <em>Blogs</em></h2>
-            </div>
-
-            <div class="swiper blogSwiper">
-
-                <div class="swiper-wrapper">
-
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-                    <!-- BLOG ITEM -->
-                    <div class="swiper-slide">
-                        <div class="blog-box">
-                            <article class="blog-item blog-item-box">
-
-                                <div class="blog-item-img">
-                                    <img class="blog-img"
-                                        src="<?php echo e(asset($c?->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
-                                </div>
-
-                                <div class="blog-item-content">
-                                    <h5 class="blog-item-title">
-                                        <a href="#"><?php echo e($c?->title ?? 'Marketing Insurance'); ?></a>
-                                    </h5>
-
-                                    <p><?php echo e($c?->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
-
-                                    </p>
-
-                                    <div class="blog-item-details">
-                                        <span class="blog-item-date">
-                                            <i class="fas fa-calendar-week"></i>
-                                            <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
-
-                                        </span>
-                                    </div>
-
-                                </div>
-
-                            </article>
-                        </div>
-                    </div>
-
+    <?php
+        $blogs = App\Models\Blogs\Blog::where('publish', 'published')->limit(5)->get();
+    ?>
+    <?php if($blogs->count() > 0): ?>
+
+        <!-- ═══ BLOGS ═══ -->
+        <section class="blogs">
+            <div class="container">
+
+                <div class="text-center mb-5 sr">
+                    <div class="section-eyebrow"><span class="dot"></span> Policy Updates</div>
+                    <h2 class="section-h mb-3">Our Latest <em>Blogs</em></h2>
                 </div>
 
-                <!-- Navigation Buttons (Correct Position) -->
-                <div class="swiper-button-prev blog-prev"></div>
-                <div class="swiper-button-next blog-next"></div>
+                <div class="swiper blogSwiper">
 
-            </div>
+                    <div class="swiper-wrapper">
 
-        </div>
-    </section>
+                        <!-- BLOG ITEM -->
+                        <?php $__currentLoopData = $blogs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="swiper-slide">
+                                <div class="blog-box">
+                                    <article class="blog-item blog-item-box">
 
+                                        <div class="blog-item-img">
+                                            <img class="blog-img"
+                                                src="<?php echo e(asset($b->featureImage ?? 'https://voteyour.com/uploads/blogs/681b330890f8c.png')); ?>">
+                                        </div>
 
+                                        <div class="blog-item-content">
+                                            <h5 class="blog-item-title">
+                                                <a
+                                                    href="<?php echo e(url('blog/' . $b->seo_url)); ?>"><?php echo e($b->title ?? 'Marketing Insurance'); ?></a>
+                                            </h5>
 
+                                            <p><?php echo e($b->shortDescription ?? 'What is captive insurance? How can it benefit the industry?'); ?>
 
-    <!-- ═══ TESTIMONIALS ═══ -->
-    <section class="testimonials">
-        <div class="container">
+                                            </p>
 
-            <div class="text-center mb-5 sr">
-                <div class="section-eyebrow"><span class="dot"></span> Customer Stories</div>
-                <h2 class="section-h mb-3">What Our <em>Customers Say</em></h2>
-            </div>
+                                            <div class="blog-item-details">
+                                                <span class="blog-item-date">
+                                                    <i class="fas fa-calendar-week"></i>
+                                                    <?php echo e(\Carbon\Carbon::today()->format('Y-m-d')); ?>
 
-            <div class="swiper testimonialSwiper">
+                                                </span>
+                                            </div>
 
-                <div class="swiper-wrapper">
+                                        </div>
 
-                    <!-- testimonial 1 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "PolicyLelo helped me find the perfect term plan for my family. The comparison tool is easy
-                                to use and I saved ₹4,000 per year versus what my bank offered."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av1">RK</div>
-                                <div>
-                                    <div class="testi-name">Rajesh Kumar</div>
-                                    <div class="testi-plan">Term Insurance · ₹1 Cr Cover</div>
+                                    </article>
                                 </div>
                             </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                        </div>
+
                     </div>
-
-                    <!-- testimonial 2 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "When my husband was hospitalised, the team guided us through every step of the claim.
-                                Settlement happened in just 48 hours."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av2">PS</div>
-                                <div>
-                                    <div class="testi-name">Priya Sharma</div>
-                                    <div class="testi-plan">Health Insurance · Family Floater</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "Renewed my motor insurance in under 3 minutes. No agent calls, no paperwork."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av3">AM</div>
-                                <div>
-                                    <div class="testi-name">Arjun Mehta</div>
-                                    <div class="testi-plan">Motor Insurance · Comprehensive</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "Renewed my motor insurance in under 3 minutes. No agent calls, no paperwork."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av3">AM</div>
-                                <div>
-                                    <div class="testi-name">Arjun Mehta</div>
-                                    <div class="testi-plan">Motor Insurance · Comprehensive</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "Renewed my motor insurance in under 3 minutes. No agent calls, no paperwork."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av3">AM</div>
-                                <div>
-                                    <div class="testi-name">Arjun Mehta</div>
-                                    <div class="testi-plan">Motor Insurance · Comprehensive</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- testimonial 3 -->
-                    <div class="swiper-slide">
-                        <div class="testi-card">
-                            <div class="testi-stars">★★★★★</div>
-
-                            <div class="testi-quote">
-                                "Renewed my motor insurance in under 3 minutes. No agent calls, no paperwork."
-                            </div>
-
-                            <div class="testi-author">
-                                <div class="testi-av av3">AM</div>
-                                <div>
-                                    <div class="testi-name">Arjun Mehta</div>
-                                    <div class="testi-plan">Motor Insurance · Comprehensive</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
 
                     <!-- Navigation Buttons (Correct Position) -->
+                    <div class="swiper-button-prev blog-prev"></div>
+                    <div class="swiper-button-next blog-next"></div>
 
                 </div>
-                <div class="swiper-button-prev blog-prev"></div>
-                <div class="swiper-button-next blog-next"></div>
-
 
             </div>
+        </section>
 
-        </div>
-    </section>
+    <?php endif; ?>
+
+    <?php
+        $testimonials = App\Models\Testimonial::where('publish', 'published')->get();
+    ?>
+    <?php if($testimonials->count() > 0): ?>
+
+        <!-- ═══ TESTIMONIALS ═══ -->
+        <section class="testimonials">
+            <div class="container">
+
+                <div class="text-center mb-5 sr">
+                    <div class="section-eyebrow"><span class="dot"></span> Customer Stories</div>
+                    <h2 class="section-h mb-3">What Our <em>Customers Say</em></h2>
+                </div>
+
+                <div class="swiper testimonialSwiper">
+
+                    <div class="swiper-wrapper">
+                        <?php $__currentLoopData = $testimonials; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $t): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <!-- testimonial 1 -->
+                            <div class="swiper-slide">
+                                <div class="testi-card">
+                                    <div class="testi-stars">
+                                        <?php for($i = 0; $i < $t->score; $i++): ?>
+                                            ★
+                                        <?php endfor; ?>
+
+                                    </div>
+
+                                    <div class="testi-quote">
+                                        "<?php echo e($t->message); ?>"
+                                    </div>
+
+                                    <div class="testi-author">
+                                        <div class="testi-av av1">
+                                            <?php echo e(strtoupper(collect(explode(' ', $t->name))->map(fn($w) => $w[0])->implode(''))); ?>
+
+                                        </div>
+                                        <div>
+                                            <div class="testi-name"><?php echo e($t->name); ?></div>
+                                            <div class="testi-plan"><?php echo e($t->profile); ?></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                        <!-- Navigation Buttons (Correct Position) -->
+
+                    </div>
+                    <div class="swiper-button-prev blog-prev"></div>
+                    <div class="swiper-button-next blog-next"></div>
 
 
+                </div>
 
-    <!-- ═══ --FAQs ═══ -->
-    
-
-
+            </div>
+        </section>
+    <?php endif; ?>
     <!-- ═══════════════════════════════════════
-             SECTION 6 – FAQ
-        ═══════════════════════════════════════ -->
+                     SECTION 6 – FAQ
+                ═══════════════════════════════════════ -->
+
+    <?php
+        $faqs = App\Models\Faq::where('publish', 'published')->limit(10)->get();
+    ?>
     <section class="faq-section">
         <div class="container">
-
             <div class="row align-items-center mb-5 sr">
                 <div class="col-lg-12">
                     <h2 class="section-h mb-3 text-center">Frequently Asked <em>Questions</em></h2>
-                    
-                </div>
-                
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12 mx-auto sr">
-
-                    <div class="faq-item open">
-                        <div class="faq-q" onclick="toggleFaq(this)">
-                            <span class="faq-q-text">Is car insurance mandatory in India?</span>
-                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-                        </div>
-                        <div class="faq-a">
-                            Yes, third-party car insurance is legally mandatory for all vehicles in India under the Motor
-                            Vehicles Act, 1988. Driving without valid insurance can result in a fine of ₹2,000 for the first
-                            offence and ₹4,000 for subsequent offences, along with potential imprisonment. Comprehensive
-                            insurance, while not legally required, offers far broader protection.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q" onclick="toggleFaq(this)">
-                            <span class="faq-q-text">What is the difference between comprehensive and third-party
-                                insurance?</span>
-                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-                        </div>
-                        <div class="faq-a">
-                            Third-party insurance only covers damages or injuries you cause to other people or their
-                            property. Comprehensive insurance provides all the benefits of third-party cover plus protection
-                            for your own vehicle against accidents, theft, fire, natural calamities, and more. Comprehensive
-                            is recommended for vehicles under 5 years old.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q" onclick="toggleFaq(this)">
-                            <span class="faq-q-text">How does the cashless claim process work?</span>
-                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-                        </div>
-                        <div class="faq-a">
-                            In a cashless claim, you take your damaged vehicle to any of the insurer's 20,000+ network
-                            garages. The insurer directly settles the repair bill with the garage — you only pay for
-                            non-covered items or your deductible. Our claim support team is available 24/7 to guide you
-                            through every step and ensure swift settlement.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q" onclick="toggleFaq(this)">
-                            <span class="faq-q-text">What is No Claim Bonus (NCB) and how does it work?</span>
-                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-                        </div>
-                        <div class="faq-a">
-                            NCB is a discount rewarded for not making any claims during your policy year. It starts at 20%
-                            for the first claim-free year and can go up to 50% after five consecutive claim-free years. NCB
-                            belongs to you (the policyholder), not the vehicle, so you can transfer it when you buy a new
-                            car or switch insurers.
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <div class="faq-q" onclick="toggleFaq(this)">
-                            <span class="faq-q-text">Can I buy car insurance online instantly?</span>
-                            <div class="faq-icon"><i class="fas fa-plus"></i></div>
-                        </div>
-                        <div class="faq-a">
-                            Absolutely. On PolicyLelo, you can compare plans, make payment, and receive your official policy
-                            document — all within 3 minutes, completely online. No agent visits, no paperwork, no waiting.
-                            For renewals, the process is even faster as your vehicle details are pre-filled.
-                        </div>
-                    </div>
-
                 </div>
             </div>
 
+            <?php if($faqs->count() > 0): ?>
+                <div class="row">
+                    <div class="col-lg-12 mx-auto sr">
+                        <?php $__currentLoopData = $faqs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $k => $f): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <div class="faq-item <?php echo e($k == 0 ? 'open' : ''); ?>">
+                                <div class="faq-q" onclick="toggleFaq(this)">
+                                    <span class="faq-q-text"><?php echo e($f->question); ?></span>
+                                    <div class="faq-icon"><i class="fas fa-plus"></i></div>
+                                </div>
+                                <div class="faq-a">
+                                    <?php echo e($f->answer); ?>
+
+                                </div>
+                            </div>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </section>
 
@@ -830,12 +405,12 @@
     <section class="cta-banner">
         <div class="container" style="position:relative;z-index:1">
             <div class="sr">
-                <h2 class="cta-h">Protect What Matters <em>Most.</em></h2>
-                <p class="cta-sub">Get the best insurance plan for your family — in minutes, entirely online.</p>
+                <?php echo $data->longDescriptionthree; ?>
+
                 <div class="cta-acts">
                     <a href="#categories" class="btn-cta-main"><i class="fas fa-shield-halved"
                             style="color:var(--blue)"></i> Get Best Insurance Plan</a>
-                    <a href="#" class="btn-white-outline">Talk to an Advisor <i
+                    <a href="tel:<?php echo e($setting_data['mobile']); ?>" class="btn-white-outline">Talk to an Advisor <i
                             class="fas fa-headset fa-sm"></i></a>
                 </div>
             </div>

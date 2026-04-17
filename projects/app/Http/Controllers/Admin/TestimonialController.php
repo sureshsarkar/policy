@@ -39,12 +39,12 @@ class TestimonialController extends Controller{
 
     public function store(Request $request){
         $data=$request->all();
-        if ($request->hasFile("image")) {
-            $data['image'] = Upload::fileUpload($request->file("image"),"testimonials");
-        }
-        if ($request->hasFile("bannerImage")) {
-            $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"testimonials");
-        }
+        // if ($request->hasFile("image")) {
+        //     $data['image'] = Upload::fileUpload($request->file("image"),"testimonials");
+        // }
+        // if ($request->hasFile("bannerImage")) {
+        //     $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"testimonials");
+        // }
         $this->model::create($data);
         return redirect()->route($this->admin_base_url)->with("success","Successfully Added");
     }
@@ -68,23 +68,23 @@ class TestimonialController extends Controller{
         $exist=$this->model::find($id);
         if($exist){
             $data=$request->all();
-            if ($request->hasFile("image")) {
-                Helper::deleteFile($exist->image);
-                $data['image'] = Upload::fileUpload($request->file("image"),"testimonials");
-            }
-            if ($request->hasFile("bannerImage")) {
-                Helper::deleteFile($exist->bannerImage);
-                $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"testimonials");
-            }
+            // if ($request->hasFile("image")) {
+            //     Helper::deleteFile($exist->image);
+            //     $data['image'] = Upload::fileUpload($request->file("image"),"testimonials");
+            // }
+            // if ($request->hasFile("bannerImage")) {
+            //     Helper::deleteFile($exist->bannerImage);
+            //     $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"testimonials");
+            // }
             
-            if($request->remove_image){
-                $data['image'] ='';
-                Helper::deleteFile($exist->image);
-            }
-            if($request->remove_banner_image){
-                $data['bannerImage']='';
-                Helper::deleteFile($exist->bannerImage);
-            }
+            // if($request->remove_image){
+            //     $data['image'] ='';
+            //     Helper::deleteFile($exist->image);
+            // }
+            // if($request->remove_banner_image){
+            //     $data['bannerImage']='';
+            //     Helper::deleteFile($exist->bannerImage);
+            // }
             $this->model::find($id)->update($data);
             return redirect()->route($this->admin_base_url)->with("success","Successfully Updated");
         }

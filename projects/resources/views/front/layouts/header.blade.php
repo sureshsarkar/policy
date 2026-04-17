@@ -40,10 +40,10 @@
 
       <div class="nav-cta">
         {{-- <button class="btn-nav-login">Login</button> --}}
-        <a href="{{url('/')}}">
+        <a href="{{ $setting_data['whatsapp_url'] }}" target="_blank">
             <button class="btn-nav-whatsapp-quote"><i class="fa-brands fa-whatsapp"></i></button>
         </a>
-        <a href="{{url('/')}}">
+        <a href="tel:{{ $setting_data['mobile'] }}">
             <button class="btn-nav-phone-quote"><i class="fa-solid fa-phone-volume"></i></button>
         </a>
         <button class="btn-nav-quote" data-bs-toggle="modal" data-bs-target="#getQuoteModel"><i class="fas fa-bolt fa-sm"></i> Get Quote</button>

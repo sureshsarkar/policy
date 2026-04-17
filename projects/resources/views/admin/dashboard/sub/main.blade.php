@@ -45,6 +45,14 @@
 	</div>
 </div>
 <div class="row">
+	<div class="col-md-3"><strong>WhatsApp URL</strong></div>
+	<div class="col-md-9">
+		<div class="form-group">
+			<input type="text" class="form-control" name="input['whatsapp_url']" value="{{ ModelHelper::getDataFromSetting('whatsapp_url') }}" placeholder="whatsapp">
+		</div>
+	</div>
+</div>
+<div class="row">
 	<div class="col-md-3"><strong>Email</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">

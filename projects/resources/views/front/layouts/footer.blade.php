@@ -103,23 +103,31 @@
         <div class="row g-5">
             <div class="col-lg-4">
                 <div class="foot-logo">Kharido<span>Policy</span></div>
-                <p class="foot-desc">India's most trusted insurance comparison platform. Find, compare, and buy the
-                    right
-                    policy in minutes — backed by IRDAI regulations and serving over 1 million families.</p>
+                <p class="foot-desc">{{ $setting_data['about'] }}</p>
                 <div class="foot-social">
-                    <a href="#" class="fsoc"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="fsoc"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="fsoc"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="fsoc"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="fsoc"><i class="fab fa-youtube"></i></a>
+                    @if(!empty($setting_data['facebook']))
+                    <a href="{{$setting_data['facebook']}}" class="fsoc"><i class="fab fa-facebook-f"></i></a>
+                    @endif
+                      @if(!empty($setting_data['twitter']))
+                    <a href="{{$setting_data['twitter']}}" class="fsoc"><i class="fab fa-twitter"></i></a>
+                    @endif
+                      @if(!empty($setting_data['instagram']))
+                    <a href="{{$setting_data['instagram']}}" class="fsoc"><i class="fab fa-instagram"></i></a>
+                    @endif
+                      @if(!empty($setting_data['linkedin']))
+                    <a href="{{$setting_data['linkedin']}}" class="fsoc"><i class="fab fa-linkedin-in"></i></a>
+                    @endif
+                      @if(!empty($setting_data['youtube']))
+                    <a href="{{$setting_data['youtube']}}" class="fsoc"><i class="fab fa-youtube"></i></a>
+                    @endif
                 </div>
-                <div class="foot-irdai">
+                {{-- <div class="foot-irdai">
                     <i class="fas fa-certificate fi-icon"></i>
                     <div>
                         <div class="fi-title">IRDAI Registered Broker</div>
                         <div class="fi-reg">Reg. No. PB567 · Direct Broker (Life &amp; General)</div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="col-sm-6 col-lg-3">
                 <div class="foot-col-h">Company</div>
@@ -149,7 +157,7 @@
             </div>
         </div>
         <div class="foot-bottom">
-            <div class="foot-copy">© 2026 KharidoPolicy Insurance Brokers Private Limited. All rights reserved.</div>
+            <div class="foot-copy">{{$setting_data['copyright']}}</div>
         </div>
     </div>
 </footer>

@@ -12,7 +12,7 @@
 @section('container')
 
     @php
-        $name = $data->name;
+        $name = $data->name??$data->title??"";
         $bannerImage = asset('front/images/banner.png');
         if ($data->bannerImage) {
             $bannerImage = asset($data->bannerImage);

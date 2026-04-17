@@ -45,10 +45,10 @@
                     <tr>
                         <th>#</th>
                         <th>name</th>
-                        <th>Stay Date</th>
-                        <th>Property</th>
+                        {{-- <th>Stay Date</th> --}}
+                        {{-- <th>Property</th> --}}
                         <th>Status</th>
-                        <th> Image</th>
+                        {{-- <th> Image</th> --}}
                         <th> Added on</th>
                         <th>Action</th>
                     </tr>
@@ -62,22 +62,26 @@
                             <td>
                                 {{ $client->name }}
                             </td>
-                            <td>
+                            {{-- <td>
                                 {{ $client->stay_date }}
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 {{App\Models\Location::find($client->property_id)->name ?? '' }}
-                            </td>
+                            </td> --}}
                            
                             
-                            <td>
-                                {{ $client->status }}
+                              <td>
+                                 @if($client->publish=="published")
+                                    <a href="{{ route('setPublishData',[$route,$client->id,'pending']) }}" class="btn btn-outline-success btn-xs" >Unpublished</a>
+                                @else
+                                    <a href="{{ route('setPublishData',[$route,$client->id,'published']) }}" class="btn btn-outline-danger btn-xs" >Published</a>
+                                @endif
                             </td>
-                            <td>
+                            {{-- <td>
                                 @if($client->image)
                                     <img src="{{ asset($client->image) }}" width="100" /> 
                                     @endif
-                            </td>
+                            </td> --}}
 
                             <td>
                                 {{ $client->created_at }}

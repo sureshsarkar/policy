@@ -27,7 +27,7 @@ class Testimonial extends Model
 		'score',
 		'stay_date',
 		'property_id',
-		'status'
+		'publish'
 
 
 

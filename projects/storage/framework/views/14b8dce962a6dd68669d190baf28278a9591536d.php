@@ -40,10 +40,10 @@
 
       <div class="nav-cta">
         
-        <a href="<?php echo e(url('/')); ?>">
+        <a href="<?php echo e($setting_data['whatsapp_url']); ?>" target="_blank">
             <button class="btn-nav-whatsapp-quote"><i class="fa-brands fa-whatsapp"></i></button>
         </a>
-        <a href="<?php echo e(url('/')); ?>">
+        <a href="tel:<?php echo e($setting_data['mobile']); ?>">
             <button class="btn-nav-phone-quote"><i class="fa-solid fa-phone-volume"></i></button>
         </a>
         <button class="btn-nav-quote" data-bs-toggle="modal" data-bs-target="#getQuoteModel"><i class="fas fa-bolt fa-sm"></i> Get Quote</button>

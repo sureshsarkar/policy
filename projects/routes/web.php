@@ -82,6 +82,8 @@ Route::group(["prefix" => "admin", "namespace" => "Admin", "middleware" => ["aut
         'locations' => LocationController::class,
         'attractions' => AttractionController::class,
         'welcome_packages' => WelcomePackageController::class,
+        'key-features' => KeyFeatureController::class,
+        'why-choose-us' => WhyChooseUsController::class,
         'customers' => CustomerController::class,
         'voters' => VoterController::class,
         'coupons' => CouponController::class,

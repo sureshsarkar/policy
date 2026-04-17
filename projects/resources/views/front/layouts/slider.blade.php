@@ -18,21 +18,21 @@
           Compare <strong>50+ insurance plans</strong> from India's top insurers in minutes. Comprehensive life coverage starting at just <strong>₹21/day</strong> — no hidden charges.
         </p>
         <div class="hero-actions">
-          <a href="#" class="btn-pl lg"><i class="fas fa-chart-bar"></i> Compare Plans</a>
-          <a href="#" class="btn-white-outline">Get Free Quote <i class="fas fa-arrow-right fa-xs"></i></a>
+          <a href="#categories" class="btn-pl lg"><i class="fas fa-chart-bar"></i> Compare Plans</a>
+          <a href="#" class="btn-white-outline" data-bs-toggle="modal" data-bs-target="#getQuoteModel">Get Free Quote <i class="fas fa-arrow-right fa-xs"></i></a>
         </div>
         <div class="hero-trust">
           <div class="hti">
             <div class="hti-icon"><i class="fas fa-users"></i></div>
-            <div><div class="hti-num">1M+</div><div class="hti-label">Customers</div></div>
+            <div><div class="hti-num">{{$setting_data['project completed']}}</div><div class="hti-label">Customers</div></div>
           </div>
           <div class="hti">
             <div class="hti-icon"><i class="fas fa-building"></i></div>
-            <div><div class="hti-num">50+</div><div class="hti-label">Partners</div></div>
+            <div><div class="hti-num">{{ $setting_data['Working hours'] }}+</div><div class="hti-label">Insurance Companies</div></div>
           </div>
           <div class="hti">
             <div class="hti-icon"><i class="fas fa-circle-check"></i></div>
-            <div><div class="hti-num">98%</div><div class="hti-label">Claims Settled</div></div>
+            <div><div class="hti-num">{{$setting_data['Experienced Staff']}}%</div><div class="hti-label">Claims Settled</div></div>
           </div>
         </div>
       </div>

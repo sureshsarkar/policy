@@ -185,10 +185,14 @@ a{text-decoration:none;color:inherit}
 .why-card{background:var(--white);border-radius:var(--r-lg);padding:32px;height:100%;border:1.5px solid var(--gray-100);transition:all .3s}
 .why-card:hover{transform:translateY(-4px);box-shadow:var(--sh-md);border-color:var(--blue-pale2)}
 .why-icon{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-size:1.25rem;margin-bottom:20px}
-.wi-blue{background:var(--blue-pale);color:var(--blue)}
+.wi-w1{background:var(--blue-pale);color:var(--blue)}
+.wi-w2{background:#ccfbf1;color:#0f766e}
+.wi-w3{background:#ffedd5;color:#c2410c}
+.wi-w4{background:#ede9fe;color:#7c3aed}
+/* .wi-blue{background:var(--blue-pale);color:var(--blue)}
 .wi-teal{background:#ccfbf1;color:#0f766e}
 .wi-orange{background:#ffedd5;color:#c2410c}
-.wi-purple{background:#ede9fe;color:#7c3aed}
+.wi-purple{background:#ede9fe;color:#7c3aed} */
 .why-card h5{font-family:var(--font-sans);font-size:.98rem;font-weight:700;color:var(--navy);margin-bottom:10px}
 .why-card p{font-size:.86rem;color:var(--gray-500);line-height:1.7;margin:0}
 

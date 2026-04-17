@@ -49,7 +49,8 @@
 
 
                         <th> Name</th>
-                        <th> Image</th>
+                        <th> Ordering</th>
+                        
                         <th> Publish</th>
 
                         <th>Action</th>
@@ -64,22 +65,17 @@
 
 
                             <td><?php echo e($client->name); ?></td>
+                            <td><?php echo e($client->ordering); ?></td>
 
 
-                            <td>
-                                    <?php if($client->image): ?>
-                                          <img src="<?php echo e(asset($client->image)); ?>" width="100" >
-                                    <?php endif; ?>
+                            
+                                <td>
+                                 <?php if($client->publish=="published"): ?>
+                                    <a href="<?php echo e(route('setPublishData',[$route,$client->id,'pending'])); ?>" class="btn btn-outline-success btn-xs" >Unpublished</a>
+                                <?php else: ?>
+                                    <a href="<?php echo e(route('setPublishData',[$route,$client->id,'published'])); ?>" class="btn btn-outline-danger btn-xs" >Published</a>
+                                <?php endif; ?>
                             </td>
-                            <td>
-                              <?php if($client->publish == 'published'): ?>
-                                  <a href="<?php echo e(route('setPublishData', [$route, $client->id, 0, 'status'])); ?>"
-                                      class="btn btn-outline-success btn-xs">Unpublished</a>
-                              <?php else: ?>
-                                  <a href="<?php echo e(route('setPublishData', [$route, $client->id, 1, 'status'])); ?>"
-                                      class="btn btn-outline-danger btn-xs">Published</a>
-                              <?php endif; ?>
-                          </td>
                             <td>
                                 <a href="<?php echo route($route.'.edit', [$client->id]); ?>" class="btn btn-outline-success btn-sm raw-margin-right-8"><i
                                             class="fa fa-pencil-alt"></i> </a>

@@ -11,7 +11,7 @@
 @section('container')
     @php
         $name = "Blog Detail";// Str::limit($data->title, 30);
-        $bannerImage = asset('front/images/banner.png');
+        $bannerImage = asset('front/images/inner-banner.png');
         if ($data->image) {
             $bannerImage = asset($data->image);
         }

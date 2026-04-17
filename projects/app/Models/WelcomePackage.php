@@ -20,7 +20,8 @@ class WelcomePackage extends Model
 		'name',
 		'bannerImage',
 		'publish',
-		'location_id'
+        'ordering',
+		'location_id',
     ];
 
     public static $rules = [

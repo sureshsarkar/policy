@@ -1,20 +1,29 @@
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
-            {!! Form::label("name") !!}
+            {!! Form::label("Title") !!}
             {!! Form::text("name",null,["class"=>"form-control","required"=>"required"]) !!}
             <span class="text-danger">{{ $errors->first("name")}}</span>
         </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="form-group">
-            <label>SEO URL ( Only A-z,0-9,_,- are allowed)</label>
-            {!! Form::text("seo_url",null,["class"=>"form-control","pattern"=>"[a-zA-Z0-9-_]+", "title"=>"Enter Valid SEO URL", "oninvalid"=>"this.setCustomValidity('SEO URL is not Valid Please enter first letter must be a-z and only accept chars a-z 0-9,-,_')" ,"onchange"=>"try{setCustomValidity('')}catch(e){}", "oninput"=>"setCustomValidity(' ')","required"=>"required"]) !!}
+            <label>Icon Class Name *</label>
+            {!! Form::text("seo_url",null,["class"=>"form-control", "title"=>"Enter Valid SEO URL","required"=>"required"]) !!}
             <span class="text-danger">{{ $errors->first("seo_url")}}</span>
         </div>
     </div>
-    <div class="col-md-6 ">
+
+        <div class="col-md-4">
+        <div class="form-group">
+            {!! Form::label("Ordering") !!}
+            {!! Form::text("ordering",null,["class"=>"form-control"]) !!}
+            <span class="text-danger">{{ $errors->first("ordering")}}</span>
+        </div>
+    </div>
+
+    {{-- <div class="col-md-6 ">
         <div class="form-group">
             {!! Form::label("image") !!}
             {!! Form::file("image",["class"=>"form-control"]) !!}
@@ -25,7 +34,7 @@
                 @endif
             @endisset
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="col-md-12">

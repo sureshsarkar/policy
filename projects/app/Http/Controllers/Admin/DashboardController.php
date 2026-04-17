@@ -1,7 +1,11 @@
 <?php
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
 use App\Models\OurClient;
+use App\Models\Testimonial;
+use App\Models\WelcomePackage;
+use App\Models\WhyChooseUs;
 use Illuminate\Http\Request;
 use App\Models\BasicSetting;
 use App\Helper\Upload;
@@ -45,8 +49,36 @@ class DashboardController extends Controller{
                 $data->save();
             }
         }
+        if($model=="welcome_packages"){
+            $data=WelcomePackage::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
+        if($model=="testimonials"){
+            $data=Testimonial::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
+        if($model=="why-choose-us"){
+            $data=WhyChooseUs::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
         if($model=="our-clients"){
             $data=OurClient::find($id);
+            if($data){
+                $data->publish=$status;
+                $data->save();
+            }
+        }
+        if($model=="faqs"){
+            $data=Faq::find($id);
             if($data){
                 $data->publish=$status;
                 $data->save();

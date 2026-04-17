@@ -47,6 +47,7 @@
                         
             
                         <th>Question</th>
+                        <th>Status</th>
                         
                         <th>Action</th>
                     </tr>
@@ -63,7 +64,13 @@
                                 {{ $client->question }}
                             </td>
                            
-                            
+                                 <td>
+                                 @if($client->publish=="published")
+                                    <a href="{{ route('setPublishData',[$route,$client->id,'pending']) }}" class="btn btn-outline-success btn-xs" >Unpublished</a>
+                                @else
+                                    <a href="{{ route('setPublishData',[$route,$client->id,'published']) }}" class="btn btn-outline-danger btn-xs" >Published</a>
+                                @endif
+                            </td>
                             <td>
                                 <a href="{!! route($route.'.edit', [$client->id]) !!}" class="btn btn-outline-success btn-xs raw-margin-right-8"><i
                                             class="fa fa-pencil-alt"></i> Edit</a>

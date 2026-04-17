@@ -33,12 +33,12 @@ class WelcomePackageController extends Controller{
             return redirect()->back()->withInput()->with("danger",$validator->errors()->first())->withErrors($validator->errors());
         }
         $data=$request->all();
-        if ($request->hasFile("image")) {
-            $data['image'] = Upload::fileUpload($request->file("image"),"welcome_packages");
-        }
-        if ($request->hasFile("bannerImage")) {
-            $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"welcome_packages");
-        }
+        // if ($request->hasFile("image")) {
+        //     $data['image'] = Upload::fileUpload($request->file("image"),"welcome_packages");
+        // }
+        // if ($request->hasFile("bannerImage")) {
+        //     $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"welcome_packages");
+        // }
         $this->model::create($data);
         return redirect()->route($this->admin_base_url)->with("success","Successfully Added");
     }
@@ -68,12 +68,12 @@ class WelcomePackageController extends Controller{
         $exist=$this->model::find($id);
         if($exist){
             $data=$request->all();
-            if ($request->hasFile("image")) {
-                $data['image'] = Upload::fileUpload($request->file("image"),"welcome_packages");
-            }
-            if ($request->hasFile("bannerImage")) {
-                $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"welcome_packages");
-            }
+            // if ($request->hasFile("image")) {
+            //     $data['image'] = Upload::fileUpload($request->file("image"),"welcome_packages");
+            // }
+            // if ($request->hasFile("bannerImage")) {
+            //     $data['bannerImage'] = Upload::fileUpload($request->file("bannerImage"),"welcome_packages");
+            // }
             $this->model::find($id)->update($data);
             return redirect()->route($this->admin_base_url)->with("success","Successfully Updated");
         }

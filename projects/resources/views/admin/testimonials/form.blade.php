@@ -9,7 +9,7 @@
 
 
         
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
         <div class="form-group">
             {!! Form::label("image") !!}
             {!! Form::file("image",["class"=>"form-control"]) !!}
@@ -25,9 +25,9 @@
                 @endif
             @endisset
         </div>
-    </div>
+    </div> --}}
 
-    <div class="col-md-4">
+    {{-- <div class="col-md-4">
         <div class="form-group">
             
             {!! Form::label("email") !!}
@@ -35,7 +35,7 @@
             <span class="text-danger">{{ $errors->first("email")}}</span>
             
         </div>
-    </div>
+    </div> --}}
     <div class="col-md-3 d-none">
         <div class="form-group">
             
@@ -48,14 +48,14 @@
     <div class="col-md-3">
         <div class="form-group">
             
-            {!! Form::label("score") !!}
+            {!! Form::label("Reviews") !!}
             {!! Form::selectRange("score",1,5,null,["class"=>"form-control"]) !!}
             <span class="text-danger">{{ $errors->first("score")}}</span>
             
         </div>
     </div>
  
-    <div class="col-md-3">
+    {{-- <div class="col-md-3">
         <div class="form-group">
             
             {!! Form::label("Service") !!}
@@ -63,7 +63,7 @@
             <span class="text-danger">{{ $errors->first("property_id")}}</span>
             
         </div>
-    </div>
+    </div> --}}
 
 
     <div class="col-md-3">
@@ -77,7 +77,7 @@
     </div>
 
 
-    <div class="col-md-3">
+    {{-- <div class="col-md-3">
         <div class="form-group">
             
             {!! Form::label("status") !!}
@@ -85,7 +85,7 @@
             <span class="text-danger">{{ $errors->first("status")}}</span>
             
         </div>
-    </div>
+    </div> --}}
  
 </div>
 

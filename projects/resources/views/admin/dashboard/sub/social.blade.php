@@ -64,11 +64,11 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+{{-- <div class="row">
 	<div class="col-md-3"><strong><i class="fas fa-fw fa-telegram"></i> Skype</strong></div>
 	<div class="col-md-9">
 		<div class="form-group">
 			<input type="text" class="form-control"  name="input['skype']" value="{{ ModelHelper::getDataFromSetting('skype') }}"  placeholder="Skype Link">
 		</div>
 	</div>
-</div>
+</div> --}}
