@@ -359,9 +359,7 @@
                      SECTION 6 – FAQ
                 ═══════════════════════════════════════ -->
 
-    @php
-        $faqs = App\Models\Faq::where('publish', 'published')->limit(10)->get();
-    @endphp
+    
     <section class="faq-section">
         <div class="container">
             <div class="row align-items-center mb-5 sr">
@@ -370,22 +368,25 @@
                 </div>
             </div>
 
-            @if ($faqs->count() > 0)
+            @if ($policydata->count() > 0)
+                    @foreach ($policydata as $i=> $p)
                 <div class="row">
+                <h6>{{$p->name}}</h6>
                     <div class="col-lg-12 mx-auto sr">
-                        @foreach ($faqs as $k => $f)
-                            <div class="faq-item {{ $k == 0 ? 'open' : '' }}">
+                        @foreach ($p->faqs as $k => $f)
+                            <div class="faq-item {{ ($i == 0 && $k==0) ? 'open' : '' }}">
                                 <div class="faq-q" onclick="toggleFaq(this)">
                                     <span class="faq-q-text">{{ $f->question }}</span>
                                     <div class="faq-icon"><i class="fas fa-plus"></i></div>
                                 </div>
                                 <div class="faq-a">
-                                    {{ $f->answer }}
+                                    {!! $f->answer !!}
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
+                 @endforeach
             @endif
         </div>
     </section>
@@ -397,8 +398,8 @@
             <div class="sr">
                 {!!$data->longDescriptionthree!!}
                 <div class="cta-acts">
-                    <a href="#categories" class="btn-cta-main"><i class="fas fa-shield-halved"
-                            style="color:var(--blue)"></i> Get Best Insurance Plan</a>
+                    <a href="{{ $setting_data['whatsapp_url'] }}" target="_blank" class="btn-cta-main"><i class="fa-brands fa-whatsapp"
+                            style="color:var(--green)"></i> WhatsApp Us</a>
                     <a href="tel:{{ $setting_data['mobile'] }}" class="btn-white-outline">Talk to an Advisor <i
                             class="fas fa-headset fa-sm"></i></a>
                 </div>

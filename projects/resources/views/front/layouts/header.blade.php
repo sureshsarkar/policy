@@ -4,10 +4,12 @@
   <div class="container">
     <div class="nav-inner">
       <a href="{{url('/')}}" class="nav-logo">
-        <div class="nav-logo-icon"><i class="fas fa-shield-halved"></i></div>
-        <span class="nav-logo-text">Kharido<span>Policy</span></span>
+      <img src="{{ asset($setting_data['header_logo'] ?? 'front/images/logo.png') }}" alt="Logo">
+    <span class="nav-logo-text">Policy<span>Kholo</span></span>
+        {{-- <div class="nav-logo-icon"><i class="fas fa-shield-halved"></i></div>
+        <span class="nav-logo-text">Kharido<span>Policy</span></span> --}}
       </a>
-
+ 
       <ul class="nav-menu">
         <li class="nav-item"><a href="{{url('/')}}" class="nav-link-pl {{ ($data->seo_url=='home')?'active':''}}">Home</a></li>
         <li class="nav-item"><a href="about-us" class="nav-link-pl {{ ($data->seo_url=='about-us')?'active':''}}">About Us</a></li>
